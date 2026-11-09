@@ -1,0 +1,135 @@
+/* =========================================================
+   複数ページで共有するセクション部品
+   - 英字見出し .sec-title
+   - Contact（Home 233:693 / 8:7、Concept 278:573 / 66:65 と同じデザイン）
+   home.css から内容を変えずに移動（2026-11-09、Concept実装時）
+   ========================================================= */
+
+/* 見出し（英字） */
+.sec-title {
+  font-family: var(--f-garamond);
+  font-weight: 400;
+  font-size: 39px;
+  line-height: 1.2;
+  color: var(--c-text);
+}
+
+/* =========================================================
+   Contact（スマホ 233:693 ／ PC 8:7）
+   ========================================================= */
+.contact {
+  position: relative;
+  isolation: isolate;
+  background: #fff;
+}
+
+/* 七宝の帯（原本の文字なし領域）＋中央を淡くする放射状グラデーション */
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0) 100%),
+    url("../img/home/contact-shippo.jpg") center top / 960px 58.2px repeat-y;
+}
+
+.contact__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: min(100%, 390px);
+  min-height: 388px;
+  margin-inline: auto;
+  padding: 34px 24px 28px;
+  text-align: center;
+}
+
+.contact__lead {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.contact__rule {
+  display: none;
+}
+
+.contact__body {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .contact__bg {
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(255, 255, 255, 0) 100%),
+      url("../img/home/contact-shippo.jpg") center top / 1280px 77.6px repeat-y;
+  }
+
+  /* 1280pxを超える画面：帯の左右端2周期分を外側へ反復（帯の継ぎ目を出さない） */
+  .contact::before,
+  .contact::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 50%;
+    background-repeat: repeat;
+    background-size: 203.333px 77.6px;
+  }
+
+  .contact::before {
+    left: 0;
+    background-image: url("../img/home/contact-shippo-edge-l.jpg");
+    background-position: calc(100% - 640px) 0;
+  }
+
+  .contact::after {
+    right: 0;
+    background-image: url("../img/home/contact-shippo-edge-r.jpg");
+    background-position: 640px 0;
+  }
+
+  .contact__frame {
+    gap: 0;
+    min-height: calc(500 * var(--u));
+    width: min(100%, 1280px);
+    margin-inline: auto;
+    padding: calc(72 * var(--u)) calc(var(--rail-w) + 24px) calc(88 * var(--u));
+  }
+
+  .contact__title {
+    font-size: clamp(44px, 16px + 3.3333cqw, 58.667px);
+    line-height: 1.25;
+  }
+
+  .contact__lead {
+    margin-top: calc(26.667 * var(--u));
+    font-size: clamp(18px, 11px + 0.9115cqw, 22.667px);
+    line-height: 1.4118;
+  }
+
+  .contact__rule {
+    display: block;
+    width: min(100%, 620px);
+    height: 0;
+    margin: calc(4.667 * var(--u)) 0 0;
+    border: 0;
+    border-top: 0.7px solid var(--c-contact-rule);
+  }
+
+  .contact__body {
+    margin-top: calc(21.333 * var(--u));
+    font-size: clamp(15px, 9.667px + 0.6927cqw, 18.667px);
+    line-height: 1.7857;
+  }
+
+  .contact__frame .btn--contact {
+    margin-top: calc(37.333 * var(--u));
+  }
+}

@@ -1,0 +1,574 @@
+/* =========================================================
+   Concept（Figma PC 58:65 / スマホ 278:527）
+   767px以下：スマホ構成（390基準）／768px以上：PC構成（1280基準）
+   PC：各セクションは元画像（文字なし原本）の切り抜きを背景にし、文字をHTMLで重ねる。
+       寸法は calc(N * var(--a))。--a は「背景画像の幅 ÷ 1226.667」で、1280px以上は1px（拡大しない）。
+   ========================================================= */
+
+@property --a {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1px;
+}
+
+/* =========================================================
+   スマホ（767px以下）
+   ========================================================= */
+.cp-fv,
+.cp-sec {
+  position: relative;
+}
+
+.cp-frame {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 390px);
+  margin-inline: auto;
+}
+
+.cp-fv h1,
+.cp-sec h2,
+.cp-sec h3 {
+  font-weight: 400;
+}
+
+/* ---------- FV（278:534） ---------- */
+.cp-art--fv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+}
+
+.cp-fv__titles {
+  display: contents;
+}
+
+.cp-fv__title {
+  font-family: var(--f-garamond);
+  font-size: 48px;
+  line-height: 1.5;
+}
+
+.cp-fv__title-ja {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.cp-fv__divider {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #e88f66;
+}
+
+.cp-fv__message {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* Figmaの字間調整（2行目を1行に収めるための詰め） */
+.cp-kern-a { letter-spacing: 0.08em; }
+.cp-kern-b { letter-spacing: -0.12em; }
+
+.cp-fv__intro {
+  font-size: 13px;
+  line-height: 23px; /* Figmaは行の高さを整数pxに丸めている（13×1.8＝23.4→23） */
+}
+
+/* ---------- 02（278:541） ---------- */
+.cp-s02__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 36px 24px 32px;
+}
+
+.cp-s02__title {
+  width: 100%;
+  font-size: 24px;
+  line-height: 37px;
+  text-align: center;
+}
+
+.cp-s02__body {
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* 写真：共通表示枠 342×210（原本の形状を保持し中央配置） */
+.cp-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 342 / 210;
+  overflow: hidden;
+}
+
+.cp-photo__img {
+  position: absolute;
+  max-width: none;
+}
+
+.cp-photo__img--02 { left: 10.193%; top: 0;       width: 79.613%; height: 100%; }
+.cp-photo__img--04 { left: 14.035%; top: 15%;     width: 71.930%; height: 70%; }
+.cp-photo__img--05 { left: 14.035%; top: 15.114%; width: 71.930%; height: 69.771%; }
+.cp-photo__img--06 { left: 14.035%; top: 14.771%; width: 71.930%; height: 70.462%; }
+
+/* 二重円の輪郭マスク（Figma 287:546 / 287:543 の素材） */
+.cp-photo__img--05 {
+  -webkit-mask: url("../img/concept/mask-photo-05.svg") 0 0 / 100% 100% no-repeat;
+  mask: url("../img/concept/mask-photo-05.svg") 0 0 / 100% 100% no-repeat;
+}
+
+.cp-photo__img--06 {
+  -webkit-mask: url("../img/concept/mask-photo-06.svg") 0 0 / 100% 100% no-repeat;
+  mask: url("../img/concept/mask-photo-06.svg") 0 0 / 100% 100% no-repeat;
+}
+
+/* ---------- 03 3つの考え方（278:545） ---------- */
+.cp-s03__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+  padding: 16px 24px 32px;
+  list-style: none;
+}
+
+.cp-point {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding-bottom: 6px;
+}
+
+.cp-point::before {
+  content: "";
+  display: block;
+  height: 0.6px;
+  background: rgba(199, 163, 94, 0.45);
+}
+
+.cp-point__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.cp-point__num {
+  flex: none;
+  width: 36px;
+  color: #ab7d4d;
+  font-size: 21px;
+  line-height: 33px;
+}
+
+.cp-point__title {
+  flex: 1;
+  font-size: 22px;
+  line-height: 34px;
+}
+
+.cp-point__body {
+  font-size: 14px;
+  line-height: 25px;
+}
+
+/* ---------- 04〜06（278:561 / 278:565 / 278:569） ---------- */
+.cp-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px 32px;
+}
+
+.cp-feature__title {
+  width: 100%;
+  font-size: 24px;
+  line-height: 37px;
+  text-align: center;
+}
+
+.cp-feature__title--04 {
+  letter-spacing: -0.12em; /* Figma −2.88px：1行に収める */
+}
+
+.cp-feature__body {
+  width: 100%;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.cp-feature__body--04 {
+  letter-spacing: -0.03em; /* Figma −0.42px */
+}
+
+/* ---------- スマホのつなぎ装飾（独立あしらい・390幅の列に配置） ---------- */
+.cp-deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cp-deco img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* FV下部の桃色あしらい（288:542）：Homeと同じ原本の波を反転・55% */
+.cp-deco--fv  { left: calc(50% - 255px); top: 42px;     width: 470px; height: 157.983px; opacity: 0.55; }
+.cp-deco--fv img { transform: rotate(180deg) scaleY(-1); }
+/* 問題提起→考え方（289:541） */
+.cp-deco--01  { left: calc(50% - 211px); top: 452px;    width: 270px; height: 64.5px;    opacity: 0.65; }
+/* 考え方→言葉にする（289:542） */
+.cp-deco--02  { left: calc(50% - 215px); top: 505.8px;  width: 430px; height: 89.973px;  opacity: 0.46; }
+/* 言葉にする→理解（289:543） */
+.cp-deco--03  { left: calc(50% - 220px); top: 343px;    width: 210px; height: 64.167px;  opacity: 0.6; }
+/* 理解→公開後（280:569：左右反転） */
+.cp-deco--03b { left: calc(50% - 15px);  top: 385.2px;  width: 210px; height: 64.167px;  opacity: 0.6; }
+.cp-deco--03b img { transform: rotate(180deg) scaleY(-1); }
+/* 公開後→Contact（289:545） */
+.cp-deco--05  { left: calc(50% - 195px); top: 269.2px;  width: 340px; height: 158.877px; opacity: 0.4; }
+
+/* =========================================================
+   PC（768px以上）
+   ========================================================= */
+@media (min-width: 768px) {
+  .page > * {
+    --a: calc((min(100cqw, 1280px) - var(--rail-w)) / 1226.667);
+  }
+
+  .cp-frame {
+    width: min(100%, 1280px);
+  }
+
+  /* 背景画像の枠：幅 1226.667×a（右に和柄の幅を残す）。高さは最小値のみ（内容に応じて伸びる） */
+  .cp-art {
+    --cp-fade: clamp(0px, (100cqw - 1280px) / 2, 48px);
+    position: relative;
+    width: calc(1226.667 * var(--a));
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+    /* 1280pxを超える画面だけ、画像の左右端を背景色へ馴染ませる（1280px以下は 0px で影響なし） */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--cp-fade), #000 calc(100% - var(--cp-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--cp-fade), #000 calc(100% - var(--cp-fade)), transparent 100%);
+  }
+
+  /* ---------- FV（58:66） ----------
+     共通の親 .cp-fv の中に
+       外側の枠 .cp-fv__outer：正規ロゴ・横並びナビ（最大 --cp-outer-max、Homeと同じ考え方）
+       中央の枠 .cp-frame   ：背景（波・区切り線）・ぼかしロゴ・見出し・本文（最大1280px） */
+  .cp-fv {
+    --cp-outer-max: 1440px; /* 1280px＝調整前と同じ配置。1440px＝左右それぞれ最大80px外側へ */
+  }
+
+  /* ぼかしロゴの続きを右端の和柄（z-index:4）より前面に出すため、FVの中央の枠を前面に置く
+     （見出し・本文は和柄に掛からない位置のまま） */
+  .cp-fv .cp-frame {
+    z-index: 5;
+  }
+
+  .cp-art--fv {
+    display: block;
+    min-height: calc(746.667 * var(--a));
+    padding: calc(162.667 * var(--a)) 0 calc(40 * var(--a));
+    background: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .cp-fv__titles,
+  .cp-fv__message,
+  .cp-fv__intro {
+    position: relative; /* 背景・ぼかしロゴより前面 */
+  }
+
+  /* 背景：原本の切り抜き（ピンクの波・ぼかしロゴ・区切り線）。
+     焼き込まれている正規ロゴの範囲だけマスクで透明にし、独立した正規ロゴと二重にならないようにする
+     （周囲は原本でもページ背景色 #FBF7EF と同じ色のため境界は出ない）。
+     1280pxを超える画面では、原本に続きのない波の左右端を --cp-fade（最大48px）で背景色へ馴染ませる */
+  .cp-fv__bg {
+    position: absolute;
+    inset: 0;
+    background: url("../img/concept/pc-fv.jpg") 0 0 / 100% auto no-repeat;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0, #000 var(--cp-fade), #000 calc(100% - var(--cp-fade)), transparent 100%),
+      linear-gradient(#000, #000);
+    mask-image:
+      linear-gradient(to right, transparent 0, #000 var(--cp-fade), #000 calc(100% - var(--cp-fade)), transparent 100%),
+      linear-gradient(#000, #000);
+    -webkit-mask-size: 100% 100%, calc(200 * var(--a)) calc(100 * var(--a));
+    mask-size: 100% 100%, calc(200 * var(--a)) calc(100 * var(--a));
+    -webkit-mask-position: 0 0, calc(40 * var(--a)) calc(15 * var(--a));
+    mask-position: 0 0, calc(40 * var(--a)) calc(15 * var(--a));
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
+  }
+
+  /* ぼかしロゴの続き：素材 fv-back-image-logo.png（ぼかし・透明度は素材に含まれる）。
+     原本への重ね合わせで実測した位置（1280時 左上(640,-34.3)・幅654、一致度0.987）。
+     背景画像の右端（x=1226.667）より外側だけを表示し、焼き込みのロゴと継ぎ目なくつなぐ。
+     濃さは原本の焼き込みと同じ 0.915 倍（実測値）に合わせる（新たなぼかしは加えない）。
+     1280pxを超える画面では、背景側のフェードと逆向きのフェードで重ね、ぼかしロゴの濃さを一定に保つ。
+     素材の外周のぼかしが画像端で途切れているため、外周3%は透明へ馴染ませる（Homeと同じ処理） */
+  .cp-fv__bglogo {
+    position: absolute;
+    top: calc(-34.3 * var(--a));
+    left: calc(640 * var(--a));
+    width: calc(654 * var(--a));
+    aspect-ratio: 1371 / 1368;
+    opacity: 0.915;
+    pointer-events: none;
+    -webkit-mask-image:
+      radial-gradient(closest-side, #000 97%, transparent 100%),
+      linear-gradient(to right, transparent calc(586.667 * var(--a) - var(--cp-fade)), #000 calc(586.667 * var(--a)));
+    mask-image:
+      radial-gradient(closest-side, #000 97%, transparent 100%),
+      linear-gradient(to right, transparent calc(586.667 * var(--a) - var(--cp-fade)), #000 calc(586.667 * var(--a)));
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .cp-fv__bglogo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  /* 外側の枠：最大 --cp-outer-max で中央配置（1280px以下は中央の枠と同じ範囲） */
+  .cp-fv__outer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: max(0px, (100% - var(--cp-outer-max)) / 2);
+    right: max(0px, (100% - var(--cp-outer-max)) / 2);
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  .cp-fv__outer > * {
+    pointer-events: auto;
+  }
+
+  /* 正規ロゴ：焼き込みと同じ大きさ・縦位置（1280時 左43.333・上20.333・幅186.667 → ロゴのインク左端54.7） */
+  .cp-fv__logo {
+    position: absolute;
+    top: calc(20.333 * var(--a));
+    left: calc(43.333 * var(--a));
+    display: block;
+    width: calc(186.667 * var(--a));
+  }
+
+  .cp-fv__logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 横並びナビ：グループとして外側の枠の右端へ。和柄の幅＋安全な余白（1280時 83px）を確保 */
+  .cp-fv__nav {
+    position: absolute;
+    /* 文字サイズをHomeと同じ19.333pxにしたため、ナビの縦の中心（1280時 59.667px）を変えないよう上端を調整
+       （行の高さ 19.333 × 1.348 ＝ 26.062px の半分を差し引く） */
+    top: calc(59.667 * var(--a) - 13.031px);
+    right: calc(var(--rail-w) + 83 * var(--a));
+  }
+
+  .cp-fv__list {
+    display: flex;
+    gap: calc(23.333 * var(--a));
+  }
+
+  .cp-fv__list .nav-link {
+    color: var(--c-text);
+    font-size: 19.333px; /* 承認済みHomeのPCメニュー（.fv-pc__list）の実測値と同じ。画面幅で縮めない */
+    line-height: 1.348;
+    white-space: nowrap;
+  }
+
+  .cp-fv__list .nav-link:hover,
+  .cp-fv__list .nav-link:focus-visible {
+    color: var(--c-hover);
+  }
+
+  .cp-fv__titles {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4 * var(--a));
+    width: calc(640 * var(--a));
+    margin-left: calc(320 * var(--a));
+  }
+
+  .cp-fv__title {
+    font-size: max(40px, 66.667 * var(--a));
+    line-height: 1.26;
+  }
+
+  .cp-fv__title-ja {
+    font-size: max(14px, 18.667 * var(--a));
+    line-height: 1.5;
+  }
+
+  .cp-fv__message {
+    width: calc(813.333 * var(--a));
+    margin: calc(61.333 * var(--a)) 0 0 calc(233.333 * var(--a));
+    font-size: max(20px, 33.333 * var(--a));
+    line-height: 1.64;
+  }
+
+  .cp-kern-a,
+  .cp-kern-b {
+    letter-spacing: 0;
+  }
+
+  .cp-fv__intro {
+    width: calc(966.667 * var(--a));
+    margin: calc(36 * var(--a)) 0 0 calc(156.667 * var(--a));
+    font-size: max(14px, 19.333 * var(--a));
+    line-height: 1.655;
+  }
+
+  /* ---------- 02（62:65） ---------- */
+  .cp-art--s02 {
+    min-height: calc(483.333 * var(--a));
+    background-image: url("../img/concept/pc-s02.jpg");
+  }
+
+  .cp-s02__text {
+    align-items: flex-start;
+    gap: calc(56 * var(--a));
+    width: calc(440 * var(--a));
+    margin-left: calc(152 * var(--a));
+    padding: calc(60 * var(--a)) 0 calc(40 * var(--a));
+  }
+
+  .cp-s02__title {
+    font-size: max(20px, 36 * var(--a)); /* 768pxでも「目的になっていませんか。」を1行に */
+    line-height: 1.5185;
+    text-align: left;
+  }
+
+  .cp-s02__body {
+    font-size: max(14px, 16.667 * var(--a));
+    line-height: 1.8;
+  }
+
+  /* ---------- 03（63:65）：罫線は背景画像に描かれている ---------- */
+  .cp-art--s03 {
+    min-height: calc(556.667 * var(--a));
+    background-image: url("../img/concept/pc-s03.jpg");
+  }
+
+  .cp-s03__list {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: calc(83.333 * var(--a));
+    padding: calc(28.667 * var(--a)) 0 calc(40 * var(--a)) calc(153.333 * var(--a));
+  }
+
+  .cp-point {
+    gap: calc(20 * var(--a));
+    width: calc(286.667 * var(--a));
+    padding-bottom: 0;
+  }
+
+  .cp-point::before {
+    display: none;
+  }
+
+  /* Figmaの列間隔は不均等（1→2列目 83.333、2→3列目 73.333）：背景画像の縦罫線に合わせる */
+  .cp-point:nth-child(3) {
+    margin-left: calc(-10 * var(--a));
+  }
+
+  .cp-point__head {
+    flex-direction: column;
+    gap: calc(32 * var(--a));
+  }
+
+  .cp-point__num {
+    width: auto;
+    color: var(--c-text);
+    font-size: max(22px, 30.667 * var(--a));
+    line-height: 1.26;
+  }
+
+  .cp-point__title {
+    font-size: max(18px, 26.667 * var(--a));
+    line-height: 1.5;
+  }
+
+  .cp-point__body {
+    font-size: max(14px, 16.667 * var(--a));
+    line-height: 1.8;
+  }
+
+  /* ---------- 04〜06（64:65 / 65:65 / 65:72） ---------- */
+  .cp-feature {
+    align-items: flex-start;
+    padding: 0 0 calc(40 * var(--a));
+  }
+
+  .cp-feature__title {
+    font-size: max(16px, 26.667 * var(--a)); /* 768pxでも見出しを1行に */
+    line-height: 1.5;
+    text-align: left;
+    letter-spacing: 0;
+  }
+
+  .cp-feature__body {
+    font-size: max(14px, 17.333 * var(--a));
+    line-height: 1.7308;
+    letter-spacing: 0;
+  }
+
+  .cp-art--s04 {
+    min-height: calc(400 * var(--a));
+    background-image: url("../img/concept/pc-s04.jpg");
+  }
+
+  .cp-feature--04 {
+    gap: calc(46.667 * var(--a));
+    width: calc(506.667 * var(--a));
+    margin-left: calc(703.333 * var(--a));
+    padding-top: calc(113.333 * var(--a));
+  }
+
+  .cp-art--s05 {
+    min-height: calc(406.667 * var(--a));
+    background-image: url("../img/concept/pc-s05.jpg");
+  }
+
+  .cp-feature--05 {
+    gap: calc(46.667 * var(--a));
+    width: calc(426.667 * var(--a));
+    margin-left: calc(173.333 * var(--a));
+    padding-top: calc(93.333 * var(--a));
+  }
+
+  .cp-art--s06 {
+    min-height: calc(487.333 * var(--a));
+    background-image: url("../img/concept/pc-s06.jpg");
+  }
+
+  .cp-feature--06 {
+    gap: calc(43.333 * var(--a));
+    width: calc(506.667 * var(--a));
+    margin-left: calc(703.333 * var(--a));
+    padding-top: calc(106.667 * var(--a));
+  }
+}
