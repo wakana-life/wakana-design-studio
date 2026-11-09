@@ -1085,23 +1085,25 @@
 
 /* FV文字と背景を独立。透過文字は原本と同寸、元画像内の位置を維持。 */
 @media (min-width: 768px) {
-  /* 背景ロゴ fv-back-image-logo.png（1371×1368、ぼかし・透明度は素材に含まれる。opacity・blurは重ねない）。
-     配置はデザイン原案（Photoshop）とHome.pngへの重ね合わせで実測：1280基準で幅654px、中心(967,292)、
-     左上(640,-34.3)。画像領域（x426.667〜、幅800）基準で left 26.667% / width 81.75% / top -4.2875cqw。
-     原案どおり右側は和柄に重なり、上端と右端は画面端で切れる（意図した重なり）。
-     支給PNGは外周のぼかしの途中で切り取られており、原案では境界の外側まで滑らかに薄くなるため、
-     直線の段差が出ないよう外周3%だけ透明へ馴染ませる（ロゴ本体の濃さ・ぼかしは変えない） */
+  /* 背景ロゴ fv-back-image-logo-soft.png（1499×1496）：承認済みConcept FVのぼかしロゴと同じ見え方にした派生素材。
+     原本 fv-back-image-logo.png（1371×1368）は変更せず、次の処理を素材に焼き込んでいる（_work/tools/make-soft-logo.ps1）：
+       1. 以前CSSで掛けていた外周3%の馴染ませ（楕円 97%→100%）
+       2. 四辺に透明な余白64pxを追加（ぼかしが画像の矩形境界で切れないように。外周の不透明度は0）
+       3. ガウスぼかし σ17.82px（＝1280時 8.5px。Concept FVとの重ね合わせで実測）
+       4. 濃さ×0.987・色味（ページ背景 #FBF7EF に対する濃さの比 G×1.065、B×0.977、R基準）をConceptの実測に合わせる
+     ぼかし・透明度・色はすべて素材に含まれるため、CSSでopacity・blur・maskを重ねない。
+     配置は承認済みのまま：ロゴ本体（原本の範囲）が1280基準で幅654px・左上(640,-34.3)・中心(967,292)。
+     追加した余白64px分だけ画像枠を左上へ広げる（画像領域の幅800＝100%＝100cqw 基準）。
+     原案どおり右側は和柄に重なり、上端と右端は画面端で切れる（意図した重なり） */
   .fv-pc__art .fv-pc__background-logo {
     position: absolute;
-    left: 26.667%;
-    top: -4.2875cqw;
-    width: 81.75%;
+    left: calc(26.667% - 81.75% * 64 / 1371);
+    top: calc(-4.2875cqw - 81.75cqw * 64 / 1371);
+    width: calc(81.75% * 1499 / 1371);
     max-width: none;
     height: auto;
-    aspect-ratio: 1371 / 1368;
+    aspect-ratio: 1499 / 1496;
     pointer-events: none;
-    -webkit-mask-image: radial-gradient(closest-side, #000 97%, transparent 100%);
-    mask-image: radial-gradient(closest-side, #000 97%, transparent 100%);
   }
   .fv-pc__lettering img {
     position: absolute;
