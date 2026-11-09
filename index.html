@@ -3,11 +3,347 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 本公開の承認までは noindex を維持する -->
   <meta name="robots" content="noindex">
   <title>和叶 | WAKANA Design Studio</title>
+  <meta name="description" content="大切にしている想いを、あなたらしく届く形へ。WAKANA Design Studio（和叶）">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Zen+Old+Mincho:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <script src="assets/js/page-entry.js"></script>
+  <script src="assets/js/menu.js" defer></script>
+  <script src="assets/js/works-tabs.js" defer></script>
+  <script src="assets/js/pattern-light.js" defer></script>
 </head>
 <body>
-  <h1>和叶 - WAKANA Design Studio -</h1>
-  <p>現在、公式ホームページを準備しています。</p>
+<div class="page" id="top" tabindex="-1">
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <!-- ===== スマホ：ヘッダー（233:613）・メニュー（221:517） ===== -->
+  <header class="sp-header sp-only">
+    <a class="sp-header__logo" href="#top" aria-current="page">
+      <img src="assets/img/common/logo.png" width="280" height="135" alt="和叶 WAKANA design studio">
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <img src="assets/img/common/icon-menu.svg" width="44" height="44" alt="メニューを開く">
+    </button>
+  </header>
+
+  <div class="site-menu sp-only" id="site-menu" role="dialog" aria-modal="true" aria-label="メニュー" hidden>
+    <div class="site-menu__backdrop" data-menu-close></div>
+    <div class="site-menu__panel">
+      <div class="site-menu__shippo site-menu__shippo--tl" aria-hidden="true">
+        <div class="site-menu__shippo-pattern"><img src="assets/img/common/menu-shippo.svg" width="271" height="271" alt=""></div>
+        <div class="site-menu__shippo-fade"></div>
+      </div>
+      <div class="site-menu__shippo site-menu__shippo--br" aria-hidden="true">
+        <div class="site-menu__shippo-pattern"><img src="assets/img/common/menu-shippo.svg" width="271" height="271" alt=""></div>
+        <div class="site-menu__shippo-fade"></div>
+      </div>
+      <div class="site-menu__head">
+        <button class="menu-close" type="button" data-menu-close>
+          <img src="assets/img/common/icon-close.svg" width="44" height="44" alt="メニューを閉じる">
+        </button>
+      </div>
+      <nav aria-label="メインメニュー">
+        <ul class="site-menu__list">
+          <li><a class="nav-link" href="#top" aria-current="page">Home</a></li>
+          <li><a class="nav-link" href="concept.html">Concept</a></li>
+          <li><a class="nav-link" href="service.html">Service</a></li>
+          <li><a class="nav-link" href="#works">Portfolio&amp;Works</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- 全ページを通した一本の和柄。可変ページ高にも継ぎ目なく追従する。 -->
+  <div class="rail" aria-hidden="true"><div class="rail__glow"><div class="rail__light"></div></div></div>
+  <main id="main">
+    <div class="rail-zone">
+
+      <!-- ===== FV：スマホ（233:618） ===== -->
+      <section class="fv-sp sp-only" aria-labelledby="fv-title-sp">
+        <!-- FV→Concept の装飾（267:527） -->
+        <div class="sp-deco sp-deco--fv" aria-hidden="true">
+          <div class="sp-deco__fv-box">
+            <div class="sp-deco__line" style="inset:28.46% -4.65% 17.65% -4.65%"><img src="assets/img/home/sp-wave/fv-line-00.svg" alt=""></div>
+            <div class="sp-deco__line" style="inset:17.33% -4.65% 22.71% -4.65%"><img src="assets/img/home/sp-wave/fv-line-01.svg" alt=""></div>
+            <div class="sp-deco__line" style="inset:35.6% -4.65% 19.44% -4.65%"><span style="inset:-0.48% 0"><img src="assets/img/home/sp-wave/fv-line-02.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:21.33% -4.65% 24.18% -4.65%"><span style="inset:-0.24% 0 -0.31% 0"><img src="assets/img/home/sp-wave/fv-line-03.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:31.25% -4.65% 22.02% -4.65%"><span style="inset:-0.25% 0"><img src="assets/img/home/sp-wave/fv-line-04.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:32.35% -4.65% 21.75% -4.65%"><span style="inset:-0.25% 0"><img src="assets/img/home/sp-wave/fv-line-05.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:33.45% -4.65% 21.48% -4.65%"><span style="inset:-0.26% 0"><img src="assets/img/home/sp-wave/fv-line-06.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:34.54% -4.65% 21.21% -4.65%"><span style="inset:-0.26% 0"><img src="assets/img/home/sp-wave/fv-line-07.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:35.64% -4.65% 20.94% -4.65%"><span style="inset:-0.27% 0"><img src="assets/img/home/sp-wave/fv-line-08.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:36.73% -4.65% 20.67% -4.65%"><span style="inset:-0.27% 0"><img src="assets/img/home/sp-wave/fv-line-09.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:37.83% -4.65% 20.4% -4.65%"><span style="inset:-0.28% 0"><img src="assets/img/home/sp-wave/fv-line-10.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:38.93% -4.65% 20.13% -4.65%"><span style="inset:-0.28% 0"><img src="assets/img/home/sp-wave/fv-line-11.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:40.02% -4.65% 19.85% -4.65%"><span style="inset:-0.29% 0"><img src="assets/img/home/sp-wave/fv-line-12.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:41.12% -4.65% 19.58% -4.65%"><span style="inset:-0.3% 0"><img src="assets/img/home/sp-wave/fv-line-13.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:42.21% -4.65% 19.3% -4.65%"><span style="inset:-0.3% 0"><img src="assets/img/home/sp-wave/fv-line-14.svg" alt=""></span></div>
+            <div class="sp-deco__line" style="inset:43.31% -4.65% 19.02% -4.65%"><span style="inset:-0.31% 0"><img src="assets/img/home/sp-wave/fv-line-15.svg" alt=""></span></div>
+            <!-- 原本の波（淡い桃）：265:527 / 259:634 / 259:724 -->
+            <div class="sp-deco__wave" style="left:-146.14px;top:149.08px;width:486.7px;height:369.509px">
+              <div class="sp-deco__wave-img" style="transform:rotate(-150.4deg)"><img src="assets/img/home/service-wave-main.jpg" width="1190" height="400" alt=""></div>
+            </div>
+            <div class="sp-deco__wave" style="left:153.55px;top:514.76px;width:478.365px;height:184.954px">
+              <div class="sp-deco__wave-img" style="transform:rotate(3.32deg)"><img src="assets/img/home/service-wave-main.jpg" width="1190" height="400" alt=""></div>
+            </div>
+            <div class="sp-deco__wave" style="left:16.28px;top:986.08px;width:487.119px;height:368.025px">
+              <div class="sp-deco__wave-img" style="transform:rotate(-150.66deg) scaleY(-1)"><img src="assets/img/home/service-wave-main.jpg" width="1190" height="400" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="fv-sp__title" id="fv-title-sp">
+          <img class="fv-sp__wakana-jp" src="assets/img/home/fv-sp-wakana-jp.png" width="579" height="272" alt="和叶">
+          <img class="fv-sp__wakana-en" src="assets/img/home/fv-sp-wakana-en.png" width="518" height="102" alt="WAKANA">
+          <img class="fv-sp__design" src="assets/img/home/fv-sp-design.png" width="356" height="134" alt="Design">
+          <img class="fv-sp__studio" src="assets/img/home/fv-sp-studio.png" width="342" height="134" alt="Studio">
+          <img class="fv-sp__tagline-1" src="assets/img/home/fv-sp-tagline-1.png" width="437" height="60" alt="大切にしている想いを、">
+          <img class="fv-sp__tagline-2" src="assets/img/home/fv-sp-tagline-2.png" width="435" height="60" alt="あなたらしく届く形へ。">
+        </h1>
+        <div class="fv-sp__ctas">
+          <a class="btn fv-cta fv-cta--concept" href="concept.html">“和叶”について</a>
+          <a class="btn fv-cta fv-cta--contact" href="contact.html">“相談”してみる</a>
+        </div>
+      </section>
+
+      <!-- ===== FV：PC（8:2） ===== -->
+      <!-- 共通の親 .fv-pc の中に、外側の枠（ロゴ・縦ナビ・2ボタン）と中央の枠（タイトル・背景ロゴ）を分けて置く -->
+      <section class="fv-pc pc-only" aria-labelledby="fv-title-pc">
+        <div class="fv-pc__outer">
+          <div class="fv-pc__side">
+            <a class="fv-pc__logo" href="#top" aria-current="page">
+              <img src="assets/img/common/logo.png" width="280" height="135" alt="和叶 WAKANA design studio">
+            </a>
+            <nav class="fv-pc__nav" aria-label="メインメニュー">
+              <ul class="fv-pc__list">
+                <li><a class="nav-link" href="#top" aria-current="page">Home</a></li>
+                <li><a class="nav-link" href="concept.html">Concept</a></li>
+                <li><a class="nav-link" href="service.html">Service</a></li>
+                <li><a class="nav-link" href="#works">Portfolio&amp;Works</a></li>
+                <li><a class="nav-link" href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+            <p class="fv-pc__copy">© 2026 WAKANA design studio</p>
+          </div>
+          <div class="fv-pc__ctas">
+            <a class="btn fv-cta fv-cta--concept" href="concept.html">“和叶”について</a>
+            <a class="btn fv-cta fv-cta--contact" href="contact.html">“相談”してみる</a>
+          </div>
+        </div>
+        <div class="fv-pc__center">
+        <div class="fv-pc__art">
+          <!-- 背景ロゴ：ユーザー指定素材（ぼかし・透明度は素材に含まれるため、CSSで重ねない） -->
+          <img class="fv-pc__background-logo" src="assets/img/home/fv-back-image-logo.png" width="1371" height="1368" alt="" aria-hidden="true">
+          <h1 id="fv-title-pc" class="visually-hidden">和叶 WAKANA Design Studio 大切にしている想いを、あなたらしく届く形へ。</h1>
+          <div class="fv-pc__lettering" aria-hidden="true">
+            <img class="fv-pc__jp" src="assets/img/home/fv-sp-wakana-jp.png" width="579" height="272" alt="">
+            <img class="fv-pc__en" src="assets/img/home/fv-sp-wakana-en.png" width="518" height="102" alt="">
+            <img class="fv-pc__studio" src="assets/img/home/fv-design-studio.png" width="698" height="134" alt="">
+            <img class="fv-pc__tagline-first" src="assets/img/home/fv-sp-tagline-1.png" width="437" height="60" alt="">
+            <img class="fv-pc__tagline-second" src="assets/img/home/fv-sp-tagline-2.png" width="435" height="60" alt="">
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <!-- ===== Concept（233:629 / 8:3） ===== -->
+      <section class="concept" id="concept" aria-labelledby="concept-title">
+        <div class="concept__waves" aria-hidden="true">
+          <img class="concept__wave-left" src="assets/img/home/concept-wave-left.jpg" width="300" height="820" alt="" loading="lazy">
+          <img class="concept__wave-center" src="assets/img/home/concept-wave-center.jpg" width="580" height="740" alt="" loading="lazy">
+          <img class="concept__wave-right" src="assets/img/home/concept-wave-right.jpg" width="960" height="380" alt="" loading="lazy">
+        </div>
+        <div class="concept__frame">
+          <h2 class="sec-title concept__title" id="concept-title">Concept</h2>
+          <p class="concept__lead">大切なことは<br>伝える“手段”ではなく<br>伝える“目的”</p>
+          <p class="concept__body">ホームページ、SNS、LINE、Web広告。<br>伝えるための手段は、以前よりずっと増えました。<br>けれど、手段が増えたからこそ「何を使うか」に意識が<br class="br-wide">向き、本来の目的を見失ってしまうこともあります。<br>大切なのは、まず「誰に、何を、なぜ伝えたいのか」を<br class="br-wide">整理すること。<br>和叶は、その目的から一緒に考えます。</p>
+          <a class="btn btn--gold btn--more concept__more" href="concept.html">詳しく見る</a>
+        </div>
+      </section>
+
+      <!-- ===== Service（233:637 / 8:4） ===== -->
+      <section class="service" id="service" aria-labelledby="service-title">
+        <div class="sp-deco sp-deco--service sp-only" aria-hidden="true">
+          <div class="sp-deco__service-box"><img src="assets/img/home/sp-wave/concept-service.svg" width="470" height="140" alt=""></div>
+        </div>
+        <div class="service__waves" aria-hidden="true">
+          <img class="service__wave-left" src="assets/img/home/service-wave-left.jpg" width="200" height="230" alt="" loading="lazy">
+          <img class="service__wave-main" src="assets/img/home/service-wave-main.jpg" width="1190" height="400" alt="" loading="lazy">
+          <img class="service__wave-top" src="assets/img/home/service-wave-top.jpg" width="800" height="120" alt="" loading="lazy">
+        </div>
+        <div class="service__frame">
+          <h2 class="sec-title service__title" id="service-title">Service</h2>
+          <p class="service__lead">まずは現状を整え<br>“目的”を見つけましょう</p>
+          <p class="service__body">ホームページを作る、SNSを始める、LINEを導入する。<br>どれも大切なのは、「やること」から決めないことです。<br>まずは今の状況や抱えている課題を整理し、本当に必要<br class="br-design">な目的を見つける。<br>そのうえで、HP・LP・SNS・LINEなど、今のあなたに<br class="br-design">合った最適解を共に導き出し、形にしていきます。</p>
+          <a class="btn btn--gold btn--more service__more" href="service.html">詳しく見る</a>
+        </div>
+      </section>
+
+      
+    </div>
+
+    <!-- ===== Portfolio & Works（233:645 / 8:5） ===== -->
+    <section class="works" id="works" aria-labelledby="works-title">
+      <div class="works__inner">
+        <div class="works__head">
+          <p class="works__intro pc-only">《和叶》のできること</p>
+          <h2 class="works__title" id="works-title" tabindex="-1">
+            <img src="assets/img/home/works-title.png" width="795" height="114" alt="Portfolio &amp; Works">
+          </h2>
+        </div>
+
+        <div class="works__tabs" role="tablist" aria-label="制作実績のカテゴリ">
+          <button class="works-tab" type="button" role="tab" id="works-tab-hp" aria-controls="works-panel-hp" aria-selected="true">HPデザイン</button>
+          <button class="works-tab" type="button" role="tab" id="works-tab-lp" aria-controls="works-panel-lp" aria-selected="false" tabindex="-1">LPデザイン</button>
+          <button class="works-tab" type="button" role="tab" id="works-tab-dtp" aria-controls="works-panel-dtp" aria-selected="false" tabindex="-1">DTPデザイン</button>
+        </div>
+
+        <div class="works__cards">
+          <!-- HP（41:44 / 233:654）：初期表示（2026-11-09 ユーザー指定） -->
+          <article class="work-card work-card--hp" id="works-panel-hp" role="tabpanel" aria-labelledby="works-tab-hp">
+            <span class="work-card__label" aria-hidden="true">Portfolio &amp; Works</span>
+            <span class="work-card__rule" aria-hidden="true"></span>
+            <div class="work-card__body">
+              <div class="work-card__media work-card__media--hp">
+                <img src="assets/img/home/works-hp-kirin.jpg" width="940" height="829" alt="中華そば 麒麟 ホームページのデザイン" loading="lazy">
+              </div>
+              <div class="work-card__text">
+                <h3 class="work-card__title">HPデザイン</h3>
+                <span class="work-card__subrule" aria-hidden="true"></span>
+                <p class="work-card__catch">想いを、伝わる形へ</p>
+                <p class="work-card__desc">ホームページは、ただ作るだけのものではありません。その人や企業が大切にしている想いや価値観、届けたい相手を整理し、「何のために伝えるのか」という目的から構成を設計します。見た目の美しさだけでなく、情報の伝わる順序や導線まで考え、想いが必要な人へ届くWebデザインへ整えます。</p>
+                <div class="work-card__foot">
+                  <p class="work-card__works-label">【制作実績】</p>
+                  <p class="work-card__name-row">
+                    <img class="work-card__icon" src="assets/img/home/works-icon.png" width="46" height="44" alt="">
+                    <span class="work-card__name">中華そば 麒麟</span>
+                  </p>
+                  <!-- 「詳しく見る」接続先未確定：リンク・クリック動作なし。本公開前に扱いを確定する（2026-11-09 ユーザー指示） -->
+                  <span class="btn btn--gold btn--static" aria-hidden="true">詳しく見る</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- LP（41:45 / 233:665） -->
+          <article class="work-card work-card--lp" id="works-panel-lp" role="tabpanel" aria-labelledby="works-tab-lp" hidden>
+            <span class="work-card__label" aria-hidden="true">Portfolio &amp; Works</span>
+            <span class="work-card__rule" aria-hidden="true"></span>
+            <div class="work-card__body">
+              <div class="work-card__media work-card__media--lp">
+                <img src="assets/img/home/works-lp-yume.jpg" width="397" height="350" alt="ゆめこども園 LPのデザイン" loading="lazy">
+              </div>
+              <div class="work-card__text">
+                <h3 class="work-card__title">LPデザイン</h3>
+                <span class="work-card__subrule" aria-hidden="true"></span>
+                <p class="work-card__catch">相手の「捉え方」から、届く流れをつくる。</p>
+                <p class="work-card__desc">「こんなお悩みありませんか？」という課題提起を起点に、届けたい相手が何を感じ、どのように内容を捉え、次の行動へ進むのかを考えて構成を設計します。デザインの完成をゴールにするのではなく、公開後の反応を見ながら改善を重ね、LPそのものを育てていくための継続的なサポートまで行います。</p>
+                <div class="work-card__foot">
+                  <p class="work-card__works-label">【制作実績】</p>
+                  <p class="work-card__name-row">
+                    <img class="work-card__icon" src="assets/img/home/works-icon.png" width="46" height="44" alt="">
+                    <span class="work-card__name">社会福祉法人 愛誠会<br>ゆめこども園 様</span>
+                  </p>
+                  <!-- 「詳しく見る」接続先未確定：リンク・クリック動作なし。本公開前に扱いを確定する（2026-11-09 ユーザー指示） -->
+                  <span class="btn btn--gold btn--static" aria-hidden="true">詳しく見る</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- DTP（41:48 / 233:676） -->
+          <article class="work-card work-card--dtp" id="works-panel-dtp" role="tabpanel" aria-labelledby="works-tab-dtp" hidden>
+            <span class="work-card__label" aria-hidden="true">Portfolio &amp; Works</span>
+            <span class="work-card__rule" aria-hidden="true"></span>
+            <div class="work-card__body">
+              <div class="work-card__media work-card__media--dtp">
+                <div class="work-card__meishi work-card__meishi--front">
+                  <img src="assets/img/home/works-dtp-card-front.png" width="650" height="1075" alt="和叶 自社名刺（表面）" loading="lazy">
+                </div>
+                <div class="work-card__meishi work-card__meishi--back">
+                  <img src="assets/img/home/works-dtp-card-back.jpg" width="650" height="1075" alt="和叶 自社名刺（裏面）" loading="lazy">
+                </div>
+              </div>
+              <div class="work-card__text">
+                <h3 class="work-card__title">DTPデザイン</h3>
+                <span class="work-card__subrule" aria-hidden="true"></span>
+                <p class="work-card__catch">手に取る一枚に、想いと人柄を。</p>
+                <p class="work-card__desc">名刺やチラシなど、手に取って伝わるものにも、その人らしさを。言葉や色、余白、情報の並びを整え、想いが自然に届く形を考えます。和叶の自社名刺では、表面に屋号と名前を、裏面に人柄や大切にしている考え方を添えました。出会いから、その先のつながりへ。会話のきっかけになる一枚を目指しています。</p>
+                <div class="work-card__foot">
+                  <p class="work-card__works-label">【制作実績】</p>
+                  <p class="work-card__name-row">
+                    <img class="work-card__icon" src="assets/img/home/works-icon.png" width="46" height="44" alt="">
+                    <span class="work-card__name">和叶｜自社名刺デザイン</span>
+                  </p>
+                  <!-- 「詳しく見る」接続先未確定：リンク・クリック動作なし。本公開前に扱いを確定する（2026-11-09 ユーザー指示） -->
+                  <span class="btn btn--gold btn--static" aria-hidden="true">詳しく見る</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="rail-zone">
+      <!-- ===== About（233:689 / 8:6） ===== -->
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="about__frame">
+          <h2 class="sec-title about__title" id="about-title">About</h2>
+          <h3 class="about__lead">“和叶”について</h3>
+          <div class="about__body">
+            <p>WAKANA Design Studioは、<br>〈和叶-Wakana Life Design-〉が目指す世界を実現するための「仕事」領域を担う事業です。</p>
+            <p>和叶が大切にしているのは、<br>一人ひとりが自分の想いや価値観を大切にしながら、<br class="br-wide">自分らしく、ありのままに生きられること。</p>
+            <p>そのためにWAKANA Design Studioでは、<br>事業や活動の中にある想い、価値観、届けたい世界を整理し、<br class="br-wide">Web・SNS・デザインを通して、必要な人へ伝わる形へ整えます。</p>
+            <p>デザインそのものを目的にするのではなく、<br>その先で、その人や事業が自分らしく活動を続けられること。</p>
+            <p>それが、WAKANA Design Studioが目指していることです。</p>
+          </div>
+        </div>
+      </section>
+      
+    </div>
+
+    <!-- ===== Contact（233:693 / 8:7） ===== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__bg" aria-hidden="true"></div>
+      <div class="contact__frame">
+        <h2 class="sec-title contact__title" id="contact-title">Contact</h2>
+        <p class="contact__lead">あなたの大切にしている想いを、あなたらしく届く形へ。</p>
+        <hr class="contact__rule">
+        <p class="contact__body">まだ言葉になっていなくても大丈夫です。<br>あなたの「想い」や「価値観」を一緒に整理し、<br>必要な人へきちんと伝わる環境へ落とし込む<br class="br-sp">お手伝いをいたします。</p>
+        <a class="btn btn--contact" href="contact.html">まずは“想い”を聴かせてください</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== フッター（8:8 / 233:700） ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__logo" href="#top" aria-current="page">
+        <img src="assets/img/common/footer-logo.png" width="225" height="110" alt="和叶 WAKANA design studio" loading="lazy">
+      </a>
+      <hr class="site-footer__rule site-footer__rule--top">
+      <nav class="site-footer__nav" aria-label="フッターメニュー">
+        <ul class="site-footer__list">
+          <li><a class="nav-link" href="#top" aria-current="page">Home</a></li>
+          <li><a class="nav-link" href="concept.html">Concept</a></li>
+          <li><a class="nav-link" href="service.html">Service</a></li>
+          <li><a class="nav-link" href="#works">Portfolio &amp; Works</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+          <li><a class="nav-link" href="privacy.html">Privacy policy</a></li>
+        </ul>
+      </nav>
+      <hr class="site-footer__rule site-footer__rule--bottom">
+      <p class="site-footer__copy"><small>© 2026 WAKANA design studio</small></p>
+    </div>
+  </footer>
+</div>
 </body>
 </html>

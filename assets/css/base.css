@@ -1,0 +1,214 @@
+/* =========================================================
+   和叶 WAKANA Design Studio — base
+   値の出典：Figma YuLb8QyBeSpgfkWDEalHmc（Home 7:2 / 233:612）、
+   仕様書 20261029・20261105・20261109
+   ========================================================= */
+
+:root {
+  /* 色 */
+  --c-bg: #fbf7ef;
+  --c-text: #3e3932;
+  --c-nav: #4d463c;
+  --c-hover: #dd703b;
+  --c-cta-text: #4d463c;
+  --c-cta-concept: #fbd78f;
+  --c-cta-concept-hover: #e69e12;
+  --c-cta-contact: #f6c8b0;
+  --c-cta-contact-hover: #ff9663;
+  --c-works: #253238;
+  --c-card: #faf7f0;
+  --c-card-sp: #fbf7ef;
+  --c-card-rule: #b0a699;
+  --c-card-subrule: #718582;
+  --c-card-text: #5c544a;
+  --c-card-label: #918578;
+  --c-card-photo-bg: #e8e3d6;
+  --c-contact-rule: #8e8e84;
+  --c-footer: #263238;
+  --c-footer-text: #707975;
+  --c-footer-rule: #646f6c;
+
+  /* 書体 */
+  --f-mincho: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --f-garamond: "Cormorant Garamond", "Times New Roman", serif;
+
+  /* 右端の和柄（PCのみ）：Figma 53.333px（原本80pxの1.5倍密度）を上限に、引き伸ばさない */
+  --rail-w: 53.333px;
+
+  /* 動き */
+  --ease: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-mincho);
+  font-weight: 400;
+  line-height: 1.7;
+  font-feature-settings: "palt" 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-hover);
+  outline-offset: 3px;
+}
+
+/* ページ全体：装飾のはみ出しで横スクロールを出さない。
+   100cqw をページ幅（スクロールバーを除く）として使う */
+.page {
+  position: relative;
+  overflow-x: hidden;
+  overflow-x: clip;
+  container-type: inline-size;
+  container-name: page;
+}
+
+/* Figma 1280基準の1単位（--u）と和柄レールの幅（--rail-w）。
+   ページ直下で px に確定させ、内側に別のコンテナがあっても同じ値を継承させる。
+   1280px以上は --u = 1px で止め、拡大しない */
+@property --u {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1px;
+}
+
+@property --rail-w {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 53.333px;
+}
+
+.page > * {
+  --u: min(1px, 100cqw / 1280);
+  --rail-w: clamp(40px, 4.1667cqw, 53.333px);
+}
+
+/* 1280基準の本文枠。大画面では中央に置き、広げない */
+.frame {
+  position: relative;
+  width: min(100%, 1280px);
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 8px 14px;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 14px;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* 改行の出し分け
+   .br-wide … 1280px以上（Figmaの本文幅と一致する幅）だけで改行
+   .br-sp   … スマホ構成（767px以下）だけで改行
+   .br-design … 767px以下と1280px以上で改行（768〜1279pxは自然な折り返し） */
+.br-wide,
+.br-design {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .br-design {
+    display: inline;
+  }
+}
+
+@media (min-width: 768px) {
+  .br-sp {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .br-wide,
+  .br-design {
+    display: inline;
+  }
+}
+
+/* 表示の出し分け（768pxでPC構成に切り替え） */
+@media (max-width: 767.98px) {
+  .pc-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .sp-only {
+    display: none !important;
+  }
+}
