@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 本公開の承認までは noindex を維持する -->
-  <meta name="robots" content="noindex">
   <title>Service | 和叶 WAKANA Design Studio</title>
   <meta name="description" content="まずは現状を整え、“目的”を見つけましょう。和叶（WAKANA Design Studio）のWebデザイン・DTPデザインと料金。">
+  <link rel="canonical" href="https://design.wakana-life.com/service.html">
+  <link rel="icon" href="favicon.ico?v=20261110b" sizes="any">
+  <link rel="icon" href="assets/img/favicon/favicon.svg?v=20261110b" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png?v=20261110b">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="和叶 WAKANA Design Studio">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="Service | 和叶 WAKANA Design Studio">
+  <meta property="og:description" content="まずは現状を整え、“目的”を見つけましょう。和叶（WAKANA Design Studio）のWebデザイン・DTPデザインと料金。">
+  <meta property="og:url" content="https://design.wakana-life.com/service.html">
+  <meta property="og:image" content="https://design.wakana-life.com/assets/img/common/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="和叶 WAKANA Design Studio　大切にしている想いを、あなたらしく届く形へ。">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Zen+Old+Mincho:wght@400;500&display=swap">
@@ -16,6 +29,7 @@
   <link rel="stylesheet" href="assets/css/service.css">
   <script src="assets/js/page-entry.js"></script>
   <script src="assets/js/menu.js" defer></script>
+  <script src="assets/js/notice.js" defer></script>
   <script src="assets/js/pattern-light.js" defer></script>
   <script src="assets/js/price-carousel.js" defer></script>
   <script src="assets/js/faq.js" defer></script>
@@ -94,8 +108,8 @@
           <p class="sv-fv__message">まずは現状を整え、<br class="br-sp">“目的”を見つけましょう。</p>
           <p class="sv-fv__intro">ホームページ、SNS、LINE。<br>現状の“目的”から今のあなたに合った<br class="br-sp">最適解を共に導き出し、<br class="br-pc">形にしていきます。</p>
           <div class="sv-ctas sv-ctas--fv">
-            <!-- 制作実績の接続先は未確定のため、見た目のみ（リンク・クリック・フォーカスなし） -->
-            <span class="btn sv-cta sv-cta--works">制作実績を見る</span>
+            <!-- 制作実績の詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
+            <button class="btn sv-cta sv-cta--works" type="button" data-notice="works-notice" aria-haspopup="dialog">制作実績を見る</button>
             <a class="btn sv-cta sv-cta--consult" href="contact.html">“想い”を相談する</a>
           </div>
         </div>
@@ -116,7 +130,7 @@
             <p class="sv-text__body">HPやLPの「目的」に沿って構成を設計するとともに、<br class="br-svpc">あなたの届けたい想いが相手にどのように受け取られる<br class="br-svpc">のか、その「捉え方」に着目。<br class="br-svpc">情報の伝わる順序や見せ方、導線までを考え、想いと目<br class="br-svpc">的がきちんと届くWebデザインへ落とし込みます。</p>
           </div>
           <div class="sv-ctas sv-ctas--sec">
-            <span class="btn sv-cta sv-cta--works">Web制作実績を見る</span>
+            <button class="btn sv-cta sv-cta--works" type="button" data-notice="works-notice" aria-haspopup="dialog">Web制作実績を見る</button>
             <a class="btn sv-cta sv-cta--consult" href="contact.html">相談してみる</a>
           </div>
         </div>
@@ -213,7 +227,7 @@
             <p class="sv-text__body">ポスター・フライヤー・名刺・パンフレットなど、それ<br class="br-svpc">ぞれの「目的」に沿って伝える順序や優先順位を設計し<br class="br-svpc">ます。<br class="br-svpc">限られた紙面の中でも、あなたの想いや価値、大切な情<br class="br-svpc">報が自然に伝わるよう、文字・写真・余白などを組み合<br class="br-svpc">わせ、一貫したデザインへ落とし込みます。</p>
           </div>
           <div class="sv-ctas sv-ctas--sec">
-            <span class="btn sv-cta sv-cta--works">制作実績を見る</span>
+            <button class="btn sv-cta sv-cta--works" type="button" data-notice="works-notice" aria-haspopup="dialog">制作実績を見る</button>
             <a class="btn sv-cta sv-cta--consult" href="contact.html">相談してみる</a>
           </div>
         </div>
@@ -381,6 +395,14 @@
       </div>
     </section>
   </main>
+  <!-- 制作実績の案内（詳細ページは制作中のため、移動せずにこの案内を表示する：notice.js） -->
+  <dialog class="notice" id="works-notice" aria-labelledby="works-notice-text">
+    <div class="notice__body">
+      <span class="notice__rule" aria-hidden="true"></span>
+      <p class="notice__text" id="works-notice-text">制作実績の公開ページは現在制作中です。<br>公開まで今しばらくお待ちください。</p>
+      <button class="notice__close" type="button" data-notice-close><img src="assets/img/common/icon-close.svg" width="44" height="44" alt="閉じる"></button>
+    </div>
+  </dialog>
 
   <!-- ===== フッター（75:304 ／ 293:760：Home共通） ===== -->
   <footer class="site-footer">

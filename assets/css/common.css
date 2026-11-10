@@ -287,7 +287,8 @@
     border-radius: 5.892px; /* 7 × 156 / 185.333 */
   }
 
-  .btn--static.btn--gold:hover {
+  .btn--static.btn--gold:hover,
+  .btn--static.btn--gold:focus-visible {
     border-radius: 7.4px; /* 7 × 148 / 140 */
   }
 
@@ -458,5 +459,76 @@
 @media (prefers-reduced-motion: reduce) {
   .rail__light {
     will-change: auto;
+  }
+}
+
+/* ---------- 制作実績の案内（公開ページ制作中）：Home 実績「詳しく見る」・Service「制作実績を見る」共通 ----------
+   移動先のページがまだ無いため、ボタンで小さなダイアログを開く（dialog要素：Escで閉じる・背面は操作不可）。
+   見た目はスマホメニューと同じ考え方（背景色・薄い影・右上の×）。閉じると開いたボタンへフォーカスを戻す（notice.js） */
+.notice {
+  width: min(400px, calc(100% - 48px));
+  max-width: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: var(--c-bg);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.14);
+  color: var(--c-text);
+}
+
+.notice::backdrop {
+  background: rgba(38, 50, 56, 0.28);
+}
+
+.notice__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 44px 28px 34px;
+  text-align: center;
+}
+
+.notice__rule {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #dc9774;
+}
+
+.notice__text {
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.notice__close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 44px;
+  height: 44px;
+}
+
+.notice__close img {
+  width: 44px;
+  height: 44px;
+}
+
+@media (min-width: 768px) {
+  .notice__text {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .notice[open] {
+    animation: notice-in 0.25s var(--ease);
+  }
+
+  @keyframes notice-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
   }
 }

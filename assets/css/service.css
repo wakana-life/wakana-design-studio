@@ -62,10 +62,12 @@
   transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
 
-.sv-cta--works { background: var(--c-cta-concept); cursor: default; }
+.sv-cta--works { background: var(--c-cta-concept); }
 .sv-cta--consult { background: var(--c-cta-contact); }
 
-.sv-cta--works:hover {
+/* 制作実績：詳細ページは制作中のため、押すと「公開ページ制作中」の案内を開くボタン（notice.js） */
+.sv-cta--works:hover,
+.sv-cta--works:focus-visible {
   background: var(--c-cta-concept-hover);
   color: #fff;
 }

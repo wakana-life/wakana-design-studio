@@ -748,7 +748,7 @@
   line-height: 1.65;
 }
 
-/* 「詳しく見る」：接続先未確定のため見た目のみ（リンク・クリック動作なし） */
+/* 「詳しく見る」：詳細ページは制作中のため、押すと「公開ページ制作中」の案内を開くボタン（notice.js） */
 .btn--static {
   width: 148px;
   height: 37.352px;
@@ -757,7 +757,6 @@
   box-shadow: 0 2.114px 2.114px rgba(64, 51, 31, 0.25);
   font-size: 18.32px;
   line-height: 25.371px;
-  cursor: default;
   user-select: none;
 }
 

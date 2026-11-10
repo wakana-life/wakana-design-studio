@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 本公開の承認までは noindex を維持する -->
-  <meta name="robots" content="noindex">
-  <title>和叶 | WAKANA Design Studio</title>
-  <meta name="description" content="大切にしている想いを、あなたらしく届く形へ。WAKANA Design Studio（和叶）">
+  <title>和叶 WAKANA Design Studio | Webデザイン・DTPデザイン</title>
+  <meta name="description" content="大切にしている想いを、あなたらしく届く形へ。和叶（WAKANA Design Studio）は、想いや目的を整理するところから、ホームページ・ランディングページ、名刺やチラシなどのデザインをお手伝いします。">
+  <link rel="canonical" href="https://design.wakana-life.com/">
+  <link rel="icon" href="favicon.ico?v=20261110b" sizes="any">
+  <link rel="icon" href="assets/img/favicon/favicon.svg?v=20261110b" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png?v=20261110b">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="和叶 WAKANA Design Studio">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="和叶 WAKANA Design Studio | Webデザイン・DTPデザイン">
+  <meta property="og:description" content="大切にしている想いを、あなたらしく届く形へ。和叶（WAKANA Design Studio）は、想いや目的を整理するところから、ホームページ・ランディングページ、名刺やチラシなどのデザインをお手伝いします。">
+  <meta property="og:url" content="https://design.wakana-life.com/">
+  <meta property="og:image" content="https://design.wakana-life.com/assets/img/common/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="和叶 WAKANA Design Studio　大切にしている想いを、あなたらしく届く形へ。">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Zen+Old+Mincho:wght@400;500&display=swap">
@@ -16,9 +29,34 @@
   <link rel="stylesheet" href="assets/css/home.css">
   <script src="assets/js/page-entry.js"></script>
   <script src="assets/js/menu.js" defer></script>
+  <script src="assets/js/notice.js" defer></script>
   <script src="assets/js/works-tabs.js" defer></script>
   <script src="assets/js/pattern-light.js" defer></script>
-</head>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://design.wakana-life.com/#website",
+        "url": "https://design.wakana-life.com/",
+        "name": "和叶 WAKANA Design Studio",
+        "inLanguage": "ja",
+        "publisher": { "@id": "https://design.wakana-life.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://design.wakana-life.com/#organization",
+        "name": "和叶 - WAKANA design studio -",
+        "alternateName": ["和叶", "WAKANA Design Studio"],
+        "url": "https://design.wakana-life.com/",
+        "logo": "https://design.wakana-life.com/assets/img/common/logo.png",
+        "email": "wakana.d.studio@gmail.com",
+        "sameAs": ["https://lin.ee/7kDfRDG"]
+      }
+    ]
+  }
+  </script></head>
 <body>
 <div class="page" id="top" tabindex="-1">
   <a class="skip-link" href="#main">本文へスキップ</a>
@@ -226,8 +264,8 @@
                     <img class="work-card__icon" src="assets/img/home/works-icon.png" width="46" height="44" alt="">
                     <span class="work-card__name">中華そば 麒麟</span>
                   </p>
-                  <!-- 「詳しく見る」接続先未確定：リンク・クリック動作なし。本公開前に扱いを確定する（2026-11-09 ユーザー指示） -->
-                  <span class="btn btn--gold btn--static" aria-hidden="true">詳しく見る</span>
+                  <!-- 「詳しく見る」詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
+                  <button class="btn btn--gold btn--static" type="button" data-notice="works-notice" aria-haspopup="dialog">詳しく見る<span class="visually-hidden">（中華そば 麒麟）</span></button>
                 </div>
               </div>
             </div>
@@ -252,8 +290,8 @@
                     <img class="work-card__icon" src="assets/img/home/works-icon.png" width="46" height="44" alt="">
                     <span class="work-card__name">社会福祉法人 愛誠会<br>ゆめこども園 様</span>
                   </p>
-                  <!-- 「詳しく見る」接続先未確定：リンク・クリック動作なし。本公開前に扱いを確定する（2026-11-09 ユーザー指示） -->
-                  <span class="btn btn--gold btn--static" aria-hidden="true">詳しく見る</span>
+                  <!-- 「詳しく見る」詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
+                  <button class="btn btn--gold btn--static" type="button" data-notice="works-notice" aria-haspopup="dialog">詳しく見る<span class="visually-hidden">（ゆめこども園）</span></button>
                 </div>
               </div>
             </div>
@@ -283,8 +321,8 @@
                     <img class="work-card__icon" src="assets/img/home/works-icon.png" width="46" height="44" alt="">
                     <span class="work-card__name">和叶｜自社名刺デザイン</span>
                   </p>
-                  <!-- 「詳しく見る」接続先未確定：リンク・クリック動作なし。本公開前に扱いを確定する（2026-11-09 ユーザー指示） -->
-                  <span class="btn btn--gold btn--static" aria-hidden="true">詳しく見る</span>
+                  <!-- 「詳しく見る」詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
+                  <button class="btn btn--gold btn--static" type="button" data-notice="works-notice" aria-haspopup="dialog">詳しく見る<span class="visually-hidden">（和叶｜自社名刺デザイン）</span></button>
                 </div>
               </div>
             </div>
@@ -323,6 +361,14 @@
       </div>
     </section>
   </main>
+  <!-- 制作実績の案内（詳細ページは制作中のため、移動せずにこの案内を表示する：notice.js） -->
+  <dialog class="notice" id="works-notice" aria-labelledby="works-notice-text">
+    <div class="notice__body">
+      <span class="notice__rule" aria-hidden="true"></span>
+      <p class="notice__text" id="works-notice-text">制作実績の公開ページは現在制作中です。<br>公開まで今しばらくお待ちください。</p>
+      <button class="notice__close" type="button" data-notice-close><img src="assets/img/common/icon-close.svg" width="44" height="44" alt="閉じる"></button>
+    </div>
+  </dialog>
 
   <!-- ===== フッター（8:8 / 233:700） ===== -->
   <footer class="site-footer">

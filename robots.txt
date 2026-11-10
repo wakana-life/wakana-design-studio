@@ -1,0 +1,6 @@
+# design.wakana-life.com
+# Nothing is blocked (CSS / JavaScript / images must stay crawlable). Pre-launch privacy relies on the noindex meta tag, not on this file.
+User-agent: *
+Allow: /
+
+Sitemap: https://design.wakana-life.com/sitemap.xml
