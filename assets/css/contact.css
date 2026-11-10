@@ -1,0 +1,632 @@
+/* =========================================================
+   Contact（Figma PC 90:151 / スマホ 320:705）
+   767px以下：スマホ構成（390基準）／768px以上：PC構成（1280基準）
+   PC：寸法は calc(N * var(--a))。--a は「背景画像の幅 ÷ 1226.667」で、1280px以上は1px（拡大しない）。
+       お問い合わせ方法は 1024px以上で背景画像のカードに文字・ボタンを重ね、768〜1023pxはHTMLのカード（スマホと同じ部品）。
+   FVの正規ロゴ・横並びナビは承認済みConcept・Serviceと同じ配置ルール・同じ値。
+   ========================================================= */
+
+@property --a {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1px;
+}
+
+/* =========================================================
+   スマホ（767px以下）を基本に記述
+   ========================================================= */
+.ct-fv,
+.ct-methods,
+.ct-talk {
+  position: relative;
+}
+
+.ct-frame {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 390px);
+  margin-inline: auto;
+}
+
+.ct-art {
+  position: relative;
+}
+
+.ct-fv h1,
+.ct-methods h2,
+.ct-methods h3,
+.ct-talk h2 {
+  font-weight: 400;
+}
+
+.ct-col {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ct-divider {
+  display: block;
+  flex: none;
+}
+
+/* ---------- FV（320:712）---------- */
+.ct-art--fv {
+  padding: 20px 24px 36px;
+}
+
+.ct-fv .ct-col {
+  gap: 16px;
+}
+
+.ct-fv__title {
+  font-family: var(--f-garamond);
+  font-size: 48px;
+  line-height: 1.7;
+}
+
+.ct-fv__title-ja {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.ct-fv__divider {
+  width: 48px;
+  height: 2px;
+  background: #e88f66;
+}
+
+/* 390基準 22px。狭い画面は1行目（15字）が342pxの列に収まるよう縮める */
+.ct-fv__message {
+  font-weight: 500;
+  font-size: min(22px, (100vw - 48px) / 15.4);
+  line-height: 1.7;
+}
+
+.ct-fv__intro {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 共通の桃色あしらい（320:753：Homeの原本の波・Concept共通の切り抜き、左右反転、不透明度55%）。
+   ページ上端から 126px（ヘッダー84pxの下 42px）、列の左端から −60px（左側は画面外）。文字の背面 */
+.ct-fv__deco {
+  position: absolute;
+  top: 42px;
+  left: -60px;
+  width: 470px;
+  height: 157.983px;
+  opacity: 0.55;
+  transform: scaleX(-1);
+  pointer-events: none;
+}
+
+.ct-fv__deco img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* ---------- お問い合わせ方法（320:718）---------- */
+.ct-art--methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 24px 40px;
+}
+
+.ct-methods .ct-col {
+  gap: 24px;
+}
+
+.ct-methods__title {
+  color: #6d5949;
+  font-weight: 500 !important;
+  font-size: 28px;
+  line-height: 1.7;
+}
+
+.ct-methods__divider {
+  display: none; /* スマホのデザインには無い（PCのみ） */
+}
+
+.ct-methods__guide {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.ct-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+/* カード（320:721 / 320:729）：線1.3px・角丸22px。植物のあしらいは右上（65%）、文字の背面 */
+.ct-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: min(342px, 100%);
+  padding: 28px 20px 24px;
+  border: 1.3px solid;
+  border-radius: 22px;
+  overflow: hidden;
+  overflow: clip;
+  text-align: center;
+}
+
+.ct-card--line {
+  border-color: #b2ba6e;
+  background: #f9f9ee;
+}
+
+.ct-card--form {
+  border-color: #f2b28c;
+  background: #fdf6ed;
+}
+
+.ct-card > :not(.ct-card__plant) {
+  position: relative; /* 植物のあしらいより前面 */
+}
+
+.ct-card__plant {
+  position: absolute;
+  top: -1.3px;
+  right: -1.3px;
+  max-width: none;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.ct-card--line .ct-card__plant { width: 72px; height: 148.5px; }
+.ct-card--form .ct-card__plant { width: 90px; height: 125.581px; }
+
+.ct-card__icon {
+  flex: none;
+}
+
+.ct-card--line .ct-card__icon { width: 54px; height: 54px; }
+.ct-card--form .ct-card__icon { width: 44px; height: 55.917px; }
+
+.ct-card__title {
+  width: 100%;
+  font-size: 23px;
+  line-height: 1.7;
+}
+
+/* 390基準 16px。狭い画面は最長行（16字）がカードの内側に収まるよう縮める */
+.ct-card__text {
+  width: 100%;
+  font-size: min(16px, (100vw - 91px) / 16.2);
+  line-height: 1.7;
+}
+
+/* ---------- ボタン（LINE 90:187 / フォーム 90:199） ----------
+   通常：LINE #B4C68D・文字 #332D2A、フォーム #F6C8B0・文字 #3E3932、影 0 2px 2px 25%。
+   ホバー（Figma Active、0.4秒・ease-in-out、離れると通常へ戻る）：
+     LINE #93C68D・白文字・影 1px 2px 2px 32%／フォーム #FF9663・白文字・影 1px 2px 2px 32%（どちらもFigmaの値）。
+   コンポーネント説明に残る白い外周発光（Trace）は旧演出のため使わない。
+   クリック先：LINE https://lin.ee/7kDfRDG／フォーム Googleフォームの回答者向けURL（どちらも新しいタブ） */
+.ct-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: min(290px, 100%);
+  height: 54.667px;
+  border-radius: 6.667px;
+  box-shadow: 0 2px 2px rgba(64, 51, 31, 0.25);
+  font-size: 20px;
+  line-height: 29.333px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ct-btn--line {
+  background: #b4c68d;
+  color: #332d2a;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.ct-btn--line:hover,
+.ct-btn--line:focus-visible {
+  background: #93c68d;
+  color: #fff;
+  box-shadow: 1px 2px 2px rgba(56, 46, 33, 0.32);
+}
+
+.ct-btn--form {
+  background: #f6c8b0;
+  color: #3e3932;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.ct-btn--form:hover,
+.ct-btn--form:focus-visible {
+  background: #ff9663;
+  color: #fff;
+  box-shadow: 1px 2px 2px rgba(56, 46, 33, 0.32);
+}
+
+/* ---------- まずは、話してみませんか？（320:737）---------- */
+.ct-art--talk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 24px 40px;
+}
+
+/* 写真 342×285・角丸18px（原本の左60%：Figmaと同じ切り取り） */
+.ct-talk__photo {
+  width: 100%;
+  aspect-ratio: 342 / 285;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ct-talk__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ct-talk__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  text-align: center;
+}
+
+.ct-talk__title {
+  font-size: 28px;
+  line-height: 1.7;
+}
+
+.ct-talk__message {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   PC（768px以上）
+   ========================================================= */
+@media (min-width: 768px) {
+  .page > * {
+    --a: calc((min(100cqw, 1280px) - var(--rail-w)) / 1226.667);
+  }
+
+  .ct-frame {
+    width: min(100%, 1280px);
+  }
+
+  /* 背景画像の枠：幅 1226.667×a（右に和柄の幅を残す）。高さは最小値のみ（内容に応じて伸びる）。
+     1280px超は画像の左右端を背景色へ馴染ませる（Concept・Serviceと同じ。原本に続きがないため枠の位置で終わる） */
+  .ct-art {
+    --ct-fade: clamp(0px, (100cqw - 1280px) / 2, 48px);
+    width: calc(1226.667 * var(--a));
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+  }
+
+  .ct-art--methods,
+  .ct-art--talk {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--ct-fade), #000 calc(100% - var(--ct-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--ct-fade), #000 calc(100% - var(--ct-fade)), transparent 100%);
+  }
+
+  /* 文字の列：Figmaの文字はページ（1280）の中央 x=640 揃え。背景画像の枠の左端から 1280×a の幅で中央揃え */
+  .ct-col {
+    width: calc(1280 * var(--a));
+    gap: 0 !important;
+  }
+
+  /* ---------- FV（90:152） ----------
+     外側の枠 .ct-fv__outer：正規ロゴ・横並びナビ（最大 --ct-outer-max）
+     中央の枠 .ct-frame   ：背景（桃色の波・ぼかしロゴ）・見出し・本文（最大1280px） */
+  .ct-fv {
+    --ct-outer-max: 1440px; /* Concept・Serviceと同じ：1280px＝調整前、1440px＝左右それぞれ最大80px外側へ */
+  }
+
+  /* ぼかしロゴの続きを右端の和柄（z-index:4）より前面に出すため、FVの中央の枠を前面に置く（Concept・Homeと同じ） */
+  .ct-fv .ct-frame {
+    z-index: 5;
+  }
+
+  .ct-art--fv {
+    min-height: calc(800 * var(--a));
+    padding: calc(163.333 * var(--a)) 0 calc(40 * var(--a));
+  }
+
+  /* 背景：Contact原本（90:152 の画像と重ね画像 182:455〜457 を Figma と同じ順に合成）。
+     焼き込みの正規ロゴ・区切り線は背景色へ置き換え済み（正規ロゴ・区切り線はHTML）。
+     ぼかしロゴは焼き込みのまま（Concept と同じ素材・位置・濃さ：重ね合わせで幅654・中心(967,292)、一致度0.988、濃さ0.916）。
+     1280px超は原本に続きのない波の左右端を --ct-fade（最大48px）で背景色へ馴染ませる */
+  .ct-fv__bg {
+    position: absolute;
+    inset: 0;
+    background: url("../img/contact/pc-fv.jpg") 0 0 / 100% auto no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--ct-fade), #000 calc(100% - var(--ct-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--ct-fade), #000 calc(100% - var(--ct-fade)), transparent 100%);
+    pointer-events: none;
+  }
+
+  /* ぼかしロゴの続き：承認済みConcept（.cp-fv__bglogo）と同じ素材・位置・濃さ。
+     背景画像の右端（x=1226.667）より外側だけを表示し、焼き込みのロゴと継ぎ目なくつなぐ（新たなぼかしは加えない）。
+     1280px超は背景側のフェードと逆向きのフェードで重ね、濃さを一定に保つ。外周3%は透明へ馴染ませる */
+  .ct-fv__bglogo {
+    position: absolute;
+    top: calc(-34.3 * var(--a));
+    left: calc(640 * var(--a));
+    width: calc(654 * var(--a));
+    aspect-ratio: 1371 / 1368;
+    opacity: 0.915;
+    pointer-events: none;
+    -webkit-mask-image:
+      radial-gradient(closest-side, #000 97%, transparent 100%),
+      linear-gradient(to right, transparent calc(586.667 * var(--a) - var(--ct-fade)), #000 calc(586.667 * var(--a)));
+    mask-image:
+      radial-gradient(closest-side, #000 97%, transparent 100%),
+      linear-gradient(to right, transparent calc(586.667 * var(--a) - var(--ct-fade)), #000 calc(586.667 * var(--a)));
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .ct-fv__bglogo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  .ct-fv__outer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: max(0px, (100% - var(--ct-outer-max)) / 2);
+    right: max(0px, (100% - var(--ct-outer-max)) / 2);
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  .ct-fv__outer > * {
+    pointer-events: auto;
+  }
+
+  /* 正規ロゴ：Concept・Serviceと同じ（1280時 左43.333・上20.333・幅186.667） */
+  .ct-fv__logo {
+    position: absolute;
+    top: calc(20.333 * var(--a));
+    left: calc(43.333 * var(--a));
+    display: block;
+    width: calc(186.667 * var(--a));
+  }
+
+  .ct-fv__logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 横並びナビ：Concept・Serviceと同じ（右端は和柄の幅＋安全な余白83×a、文字はHomeと同じ19.333px） */
+  .ct-fv__nav {
+    position: absolute;
+    top: calc(59.667 * var(--a) - 13.031px);
+    right: calc(var(--rail-w) + 83 * var(--a));
+  }
+
+  .ct-fv__list {
+    display: flex;
+    gap: calc(23.333 * var(--a));
+  }
+
+  .ct-fv__list .nav-link {
+    color: var(--c-text);
+    font-size: 19.333px;
+    line-height: 1.348;
+    white-space: nowrap;
+  }
+
+  .ct-fv__list .nav-link:hover,
+  .ct-fv__list .nav-link:focus-visible {
+    color: var(--c-hover);
+  }
+
+  /* 文字（Figma 1280時：見出し上端163.333、和文250、区切り線304.667、メッセージ343.333、本文485.333） */
+  .ct-fv__title {
+    font-size: max(40px, 66.667 * var(--a));
+    line-height: 1.26;
+  }
+
+  .ct-fv__title-ja {
+    margin-top: calc(2.667 * var(--a));
+    font-size: max(14px, 20 * var(--a));
+    line-height: 1.4667;
+  }
+
+  .ct-divider {
+    width: calc(59.333 * var(--a));
+    height: max(2px, 2.667 * var(--a));
+    background: #dc9774;
+    translate: calc(1 * var(--a)) 0; /* Figmaの線は中心 x=641（文字は640） */
+  }
+
+  .ct-fv__divider {
+    margin-top: calc(25.333 * var(--a));
+  }
+
+  .ct-fv__message {
+    margin-top: calc(36 * var(--a));
+    font-size: max(20px, 32 * var(--a));
+    line-height: 1.7083;
+    white-space: nowrap;
+  }
+
+  .ct-fv__intro {
+    margin-top: calc(32.667 * var(--a));
+    font-size: max(14px, 20 * var(--a));
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+
+  /* ---------- お問い合わせ方法（90:155） ---------- */
+  .ct-art--methods {
+    display: block;
+    min-height: calc(720 * var(--a));
+    padding: calc(53.333 * var(--a)) 0 calc(60 * var(--a));
+    background-image: url("../img/contact/pc-methods.jpg");
+  }
+
+  .ct-methods__title {
+    font-size: max(24px, 38.667 * var(--a));
+    line-height: 1.4138;
+  }
+
+  .ct-methods__divider {
+    display: block;
+    margin-top: calc(7.333 * var(--a));
+    translate: calc(-0.333 * var(--a)) 0; /* Figmaの線は中心 x=639.667 */
+  }
+
+  .ct-methods__guide {
+    margin-top: calc(18.667 * var(--a));
+    font-size: max(14px, 21.333 * var(--a));
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  /* ---------- まずは、話してみませんか？（90:158） ----------
+     背景：写真（90:158 の画像と重ね画像 182:458 を合成）。半透明のパネル・桃色の縦線は原本に描かれている */
+  .ct-art--talk {
+    display: block;
+    min-height: calc(613.333 * var(--a));
+    padding: calc(248 * var(--a)) 0 calc(40 * var(--a)) calc(843.333 * var(--a));
+    background-image: url("../img/contact/pc-photo.jpg");
+  }
+
+  .ct-talk__text {
+    align-items: flex-start;
+    gap: 0;
+    width: calc(366.667 * var(--a));
+    text-align: left;
+  }
+
+  .ct-talk__title {
+    font-size: max(20px, 36 * var(--a));
+    line-height: 1.5185;
+    white-space: nowrap;
+  }
+
+  .ct-talk__message {
+    margin-top: calc(16 * var(--a));
+    font-size: max(14px, 21.333 * var(--a));
+    line-height: 1.75;
+    white-space: nowrap;
+  }
+}
+
+/* PC 1024px以上：背景画像のカード（線・地・アイコン・植物・ボタン地が描かれている）に文字とボタンを重ねる。
+   カードの中の文字・ボタンの位置は Figma 1280時：見出し上端326・中心 x=433.333／850、本文376.667、ボタン476（290×54.667） */
+@media (min-width: 1024px) {
+  .ct-cards {
+    display: block;
+  }
+
+  .ct-card {
+    position: absolute;
+    top: calc(208 * var(--a));
+    display: flex;
+    gap: 0;
+    width: calc(364 * var(--a));
+    padding: calc(118 * var(--a)) 0 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    overflow: visible;
+  }
+
+  .ct-card--line { left: calc(251.333 * var(--a)); }
+  .ct-card--form { left: calc(668 * var(--a)); }
+
+  .ct-card__plant,
+  .ct-card__icon {
+    display: none; /* 背景画像に描かれている */
+  }
+
+  .ct-card__title {
+    width: auto;
+    font-size: max(14px, 25.333 * var(--a));
+    line-height: 1.4737;
+    white-space: nowrap;
+  }
+
+  .ct-card__text {
+    width: auto;
+    margin-top: calc(13.333 * var(--a));
+    font-size: max(14px, 19.333 * var(--a));
+    line-height: 1.3793;
+    white-space: nowrap;
+  }
+
+  .ct-btn {
+    margin-top: calc(19.333 * var(--a));
+    width: calc(290 * var(--a));
+    height: calc(54.667 * var(--a));
+    border-radius: calc(6.667 * var(--a));
+    box-shadow: 0 calc(2 * var(--a)) calc(2 * var(--a)) rgba(64, 51, 31, 0.25);
+    font-size: max(14px, 20 * var(--a));
+    line-height: 1.4667;
+  }
+
+  .ct-btn--form {
+    translate: calc(0.333 * var(--a)) 0; /* Figma：フォームのボタン中心 x=850.333 */
+  }
+
+  .ct-btn--line:hover,
+  .ct-btn--line:focus-visible,
+  .ct-btn--form:hover,
+  .ct-btn--form:focus-visible {
+    box-shadow: calc(1 * var(--a)) calc(2 * var(--a)) calc(2 * var(--a)) rgba(56, 46, 33, 0.32);
+  }
+}
+
+/* PC幅のうち 768〜1023px：カードはHTML（スマホと同じ部品・寸法）を2枚横に並べる。
+   背景はカードを除いた原本（左上・右下の細い波と区切り線の位置はそのまま） */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .ct-art--methods {
+    padding-bottom: 48px;
+    background-image: url("../img/contact/pc-methods-bare.jpg");
+  }
+
+  .ct-cards {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%; /* 背景画像の枠の内側（和柄に掛けない） */
+    margin-top: 40px;
+    padding-inline: 16px;
+  }
+
+  .ct-card {
+    width: min(342px, (100% - 24px) / 2);
+    flex: none;
+  }
+
+  .ct-card__text {
+    font-size: 16px;
+  }
+}
