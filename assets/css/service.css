@@ -1,0 +1,1495 @@
+/* =========================================================
+   Service（Figma PC 75:109 / スマホ 293:541）
+   767px以下：スマホ構成（390基準）／768px以上：PC構成（1280基準）
+   PC：寸法は calc(N * var(--a))。--a は「背景画像の幅 ÷ 1226.667」で、1280px以上は1px（拡大しない）。
+       写真のセクション（Web・DTP）は 1024px以上で写真の上に文字を重ね、768〜1023pxは写真→文字の縦積み。
+   FVの正規ロゴ・横並びナビは承認済みConcept（concept.css .cp-fv__outer 系）と同じ配置ルール・同じ値。
+   ========================================================= */
+
+@property --a {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1px;
+}
+
+/* PC（1024px以上）の写真セクションだけで改行（Figmaの本文幅と同じ比率で縮むため） */
+.br-svpc {
+  display: none;
+}
+
+/* =========================================================
+   スマホ（767px以下）を基本に記述
+   ========================================================= */
+.sv-fv,
+.sv-sec {
+  position: relative;
+}
+
+.sv-frame {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 390px);
+  margin-inline: auto;
+}
+
+.sv-fv h1,
+.sv-sec h2,
+.sv-sec h3 {
+  font-weight: 400;
+}
+
+/* ---------- ボタン（Service CTA 80:134 / 82:160 / 80:123 / 80:145） ----------
+   色は承認済みHomeのFVボタンと同じ（通常 #FBD78F / #F6C8B0、ホバー #E69E12 / #FF9663 と白文字：仕様書20261105）。
+   コンポーネント説明に残る白い外周発光は不採用のため使わない。
+   制作実績の2種は接続先が未確定のため <span>（見た目のホバーのみ。リンク・クリック・フォーカスなし） */
+.sv-ctas {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sv-cta {
+  flex: none;
+  /* 390基準は165px。390より狭い画面では2つ並びのまま縮める（文字も 4.4vw まで） */
+  width: min(165px, calc((100% - 12px) / 2));
+  height: 41.724px;
+  border-radius: 6.638px;
+  box-shadow: 0 1.897px 1.897px rgba(51, 41, 26, 0.25);
+  color: var(--c-cta-text);
+  font-size: min(15.14px, 4.4vw);
+  line-height: 20.886px;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.sv-cta--works { background: var(--c-cta-concept); cursor: default; }
+.sv-cta--consult { background: var(--c-cta-contact); }
+
+.sv-cta--works:hover {
+  background: var(--c-cta-concept-hover);
+  color: #fff;
+}
+
+.sv-cta--consult:hover,
+.sv-cta--consult:focus-visible {
+  background: var(--c-cta-contact-hover);
+  color: #fff;
+}
+
+/* Figmaのボタン行の高さ（51 / 48 / 52px）をそのまま保持し、セクションの高さを原案に合わせる */
+.sv-ctas--fv { height: 51px; }
+.sv-web .sv-ctas--sec { height: 48px; }
+.sv-dtp .sv-ctas--sec { height: 52px; }
+
+/* ---------- FV（293:548） ---------- */
+.sv-art--fv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+}
+
+.sv-fv__title {
+  font-family: var(--f-garamond);
+  font-size: 48px;
+  line-height: 1.5;
+}
+
+.sv-fv__title-ja {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.sv-fv__divider {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #e88f66;
+}
+
+.sv-fv__message {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.sv-fv__intro {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ---------- Web／DTP（293:563 / 293:667） ---------- */
+.sv-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 32px 24px 22px;
+}
+
+.sv-text__title {
+  width: 100%;
+  font-weight: 500 !important;
+  font-size: 32px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sv-kern-dt {
+  letter-spacing: 0.1em; /* Figma「DT」の字間 3.2px（32px） */
+}
+
+.sv-text__message {
+  width: 100%;
+  font-size: 22px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sv-text__body {
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.sv-web .sv-text__body {
+  text-align: justify;
+}
+
+.sv-photo-sec .sv-ctas--sec {
+  padding-inline: 24px;
+  margin-bottom: 32px;
+}
+
+/* 写真：Web 342×227（全体を縦横比のまま表示）、DTP 342×250（ポスター中心に表示：Figma 293:669 と同じ切り取り） */
+.sv-photo {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sv-photo--web { aspect-ratio: 342 / 227; }
+.sv-photo--dtp { aspect-ratio: 342 / 250; }
+
+.sv-photo img {
+  position: absolute;
+  max-width: none;
+}
+
+.sv-photo--web img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sv-photo--dtp img {
+  top: 0;
+  left: -13.41%;
+  width: 109.9%;
+  height: 100%;
+}
+
+/* ---------- 料金の見出し（293:578 / 293:682） ---------- */
+.sv-price-title {
+  color: #6d5949;
+  font-size: 28px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sv-plan .sv-art {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 0;
+}
+
+.sv-grp .sv-art {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 0;
+}
+
+/* =========================================================
+   料金カードの横スクロール（共通）。動作は price-carousel.js
+   ・中央吸着：scroll-snap（center）
+   ・左右循環：前後に複製カード（読み上げ・フォーカス対象外、ID なし）を置き、端に来たら同じ位置の実物へ瞬時に戻す
+   ・全カードが収まる幅では横スクロールにせず中央に並べる（is-static）
+   ========================================================= */
+.price-carousel {
+  position: relative;
+  /* スマホは390列の外まで、画面幅いっぱいにスクロール領域を広げる */
+  width: 100cqw;
+  margin-left: calc(50% - 50cqw);
+}
+
+.price-carousel__viewport {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  outline-offset: -4px;
+}
+
+.price-carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.price-carousel__viewport.is-dragging {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+
+.price-carousel__track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.price-carousel__item {
+  flex: none;
+  scroll-snap-align: center;
+}
+
+.price-carousel img {
+  -webkit-user-drag: none;
+}
+
+/* 全カードが収まる幅：横スクロールにしない */
+.price-carousel.is-static .price-carousel__viewport {
+  overflow: visible;
+  scroll-snap-type: none;
+}
+
+.price-carousel.is-static .price-carousel__track {
+  margin-inline: auto;
+}
+
+/* 前後ボタン（横スクロール時のみ表示：マウス・キーボード操作用） */
+.price-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.price-carousel__controls[hidden] {
+  display: none;
+}
+
+.price-carousel__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(167, 127, 72, 0.45);
+  border-radius: 50%;
+  color: #8d7356;
+  font-size: 26px;
+  line-height: 1;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.price-carousel__btn span {
+  margin-top: -3px;
+}
+
+.price-carousel__btn:hover,
+.price-carousel__btn:focus-visible {
+  background: #f6c8b0;
+  color: #4d463c;
+}
+
+.price-carousel__status {
+  min-width: 9em;
+  color: #6d5949;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* 前後ボタンはタッチ端末でも表示する（フリック以外に、ドラッグせずに操作できる手段を残す：11/10 ユーザー指示） */
+
+/* Web料金（299:705）：上8・下20・カード間18（スマホ） */
+.price-carousel--web .price-carousel__track {
+  gap: 18px;
+  padding: 8px 0 20px;
+}
+
+.price-carousel--web .price-carousel__item {
+  padding-top: 44px; /* 「おすすめ」ラベルの高さ */
+}
+
+/* DTP料金（308:705）：上下20・カード間24（スマホ） */
+.price-carousel--grp .price-carousel__track {
+  gap: 24px;
+  padding: 20px 0;
+}
+
+/* ---------- Web料金カード（176:386 / 176:476 / 176:566：316×556） ----------
+   寸法は calc(N * var(--s))：スマホ・PCの横スクロール時は 1px、PCで3枚を並べる時（1024px以上）は背景と同じ --a */
+.plan-card {
+  --s: 1px;
+  --pc: #db926d;
+  --pc-bg: #fff8ee;
+  --pc-band: #fdddcd;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: calc(316 * var(--s));
+  height: calc(556 * var(--s));
+  border: calc(1 * var(--s)) solid var(--pc);
+  border-radius: calc(34.667 * var(--s));
+  background: var(--pc-bg);
+  box-shadow: calc(2 * var(--s)) calc(10 * var(--s)) calc(12 * var(--s)) rgba(51, 43, 31, 0.2);
+  color: #6d5949;
+  text-align: center;
+}
+
+.plan-card--standard { --pc: #c61c50; --pc-bg: #fff8ee; --pc-band: #f8e1d5; }
+.plan-card--partner  { --pc: #a77f48; --pc-bg: #fcf7ed; --pc-band: #fceedd; }
+
+.plan-card__badge {
+  position: absolute;
+  top: calc(-45 * var(--s));
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: calc(77.333 * var(--s));
+  height: calc(77.333 * var(--s));
+  border-radius: 50%;
+  background: #e7976e;
+  color: #fff;
+  font-size: calc(16 * var(--s));
+  line-height: calc(26.667 * var(--s));
+  transform: translateX(-50%);
+}
+
+.plan-card__name {
+  margin-top: calc(28 * var(--s));
+  color: var(--pc);
+  font-family: var(--f-garamond);
+  font-size: calc(48 * var(--s));
+  line-height: calc(60 * var(--s));
+}
+
+.plan-card__ja {
+  margin-top: calc(3.333 * var(--s));
+  font-size: calc(20 * var(--s));
+  line-height: calc(26.667 * var(--s));
+}
+
+.plan-card__ja::after {
+  content: "";
+  display: block;
+  width: calc(41.333 * var(--s));
+  height: calc(0.667 * var(--s));
+  margin: calc(8.667 * var(--s)) auto 0;
+  background: var(--pc);
+}
+
+.plan-card__desc {
+  display: grid;
+  place-items: center;
+  height: calc(99.333 * var(--s));
+  font-size: calc(16.667 * var(--s));
+  line-height: calc(24 * var(--s));
+}
+
+/* 帯はカードの枠線の内側に収める（以前は margin −1px で枠線に重ねていたため、左右の線が帯の部分で消えていた）。
+   内側の文字・金額の位置は従来と同じ（カード外縁から19px）になるよう、余白を 19 → 18（枠線1px分）にする */
+.plan-card__prices {
+  margin: 0;
+  padding: 0 calc(18 * var(--s));
+  background: var(--pc-band);
+}
+
+.plan-card__row {
+  display: flex;
+  align-items: center;
+  height: calc(57.333 * var(--s));
+  padding: calc(6 * var(--s)) calc(6.333 * var(--s)) 0 calc(9.333 * var(--s));
+}
+
+.plan-card__row + .plan-card__row {
+  height: calc(57.333 * var(--s));
+  padding-top: 0;
+  border-top: calc(0.667 * var(--s)) solid var(--pc);
+}
+
+.plan-card__row dt {
+  font-size: calc(16.667 * var(--s));
+  line-height: calc(24 * var(--s));
+}
+
+.plan-card__row dd {
+  margin: 0 0 0 auto;
+}
+
+.plan-card__row img {
+  display: block;
+  width: calc(149.333 * var(--s));
+  height: calc(34.667 * var(--s));
+}
+
+.plan-card__features {
+  margin: 0;
+  padding: calc(7 * var(--s)) calc(19 * var(--s)) 0;
+  list-style: none;
+  text-align: left;
+}
+
+.plan-card__features li {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--s));
+  min-height: calc(46 * var(--s));
+  padding: calc(9.667 * var(--s)) 0 calc(9.667 * var(--s)) calc(6.667 * var(--s));
+  font-size: calc(16.667 * var(--s));
+  line-height: calc(26.667 * var(--s));
+}
+
+.plan-card__features li + li {
+  border-top: calc(0.667 * var(--s)) solid #e6dacb;
+}
+
+.plan-card__features li::before {
+  content: "✓";
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: calc(26.667 * var(--s));
+  height: calc(26.667 * var(--s));
+  border: calc(1 * var(--s)) solid #e7976e;
+  border-radius: 50%;
+  background: #e7976e;
+  color: #fff;
+  font-size: calc(20 * var(--s));
+  line-height: 1;
+}
+
+.plan-card__features li.is-off::before {
+  border-color: #d9d4ca;
+  background: #f6f3ec;
+  color: #c6c4bd;
+}
+
+.plan-card__features .plan-card__small {
+  font-size: calc(14 * var(--s));
+}
+
+/* ---------- 各種料金カード（174:353ほか：PC 226.667×362.667 ／ スマホ 260×416 ＝ 1.147倍） ---------- */
+.grp-card {
+  --s: 1.14706px; /* スマホ：260 ÷ 226.667 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: calc(226.667 * var(--s));
+  height: calc(362.667 * var(--s));
+  border: calc(1 * var(--s)) solid #a77f48;
+  border-radius: calc(34.667 * var(--s));
+  background: #fcf7ed;
+  box-shadow: calc(2 * var(--s)) calc(10 * var(--s)) calc(12 * var(--s)) rgba(51, 43, 31, 0.2);
+  color: #6d5949;
+}
+
+.grp-card__name {
+  margin-top: calc(32.333 * var(--s));
+  font-size: calc(33.333 * var(--s));
+  line-height: calc(46.667 * var(--s));
+  text-align: center;
+  white-space: nowrap;
+}
+
+.grp-card__prices,
+.grp-card__single {
+  margin: calc(28.333 * var(--s)) 0 0;
+  padding: 0 calc(15.333 * var(--s)) 0 calc(19.333 * var(--s));
+  background: #fceedd;
+}
+
+.grp-card__row {
+  display: flex;
+  align-items: center;
+  height: calc(57.333 * var(--s));
+  padding-left: calc(6.667 * var(--s));
+}
+
+.grp-card__row + .grp-card__row {
+  border-top: calc(0.667 * var(--s)) solid #a58e77;
+  margin-right: calc(4.667 * var(--s));
+  padding-right: 0;
+  height: calc(57.333 * var(--s));
+}
+
+.grp-card__row:first-child {
+  margin-right: calc(4.667 * var(--s));
+}
+
+.grp-card__row dt {
+  font-size: calc(16.667 * var(--s));
+  line-height: calc(26.667 * var(--s));
+}
+
+.grp-card__row dd {
+  margin: 0 calc(-4.667 * var(--s)) 0 auto;
+}
+
+.grp-card__row img,
+.grp-card__single img {
+  display: block;
+  width: calc(110.667 * var(--s));
+  height: calc(34.667 * var(--s));
+}
+
+.grp-card--wide-price .grp-card__row img {
+  width: calc(133.333 * var(--s));
+}
+
+/* ポスター：料金1つ＋罫線（174:455〜174:458） */
+.grp-card__single {
+  height: calc(114.667 * var(--s));
+  padding: calc(32 * var(--s)) calc(20 * var(--s)) 0;
+}
+
+.grp-card__single img {
+  margin-inline: auto;
+}
+
+.grp-card__single::after {
+  content: "";
+  display: block;
+  height: calc(0.667 * var(--s));
+  margin-top: calc(10.667 * var(--s));
+  background: #a58e77;
+}
+
+.grp-card__notes {
+  margin: calc(16 * var(--s)) 0 0;
+  padding: 0 calc(10 * var(--s)) 0 calc(21.667 * var(--s));
+  list-style: none;
+  font-size: calc(16.667 * var(--s));
+  line-height: calc(28 * var(--s));
+}
+
+/* ---------- 制作の流れ（293:720） ---------- */
+.sv-flow .sv-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 24px;
+}
+
+.sv-flow__title {
+  color: #6d5949;
+  font-size: 27px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sv-flow__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sv-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+/* 番号→アイコン→工程名→説明（スマホ）。PCは番号→工程名→アイコン→説明 */
+.sv-step__num  { order: 1; font-family: var(--f-garamond); font-size: 22px; line-height: 1.5; }
+.sv-step__icon { order: 2; width: 44px; height: 41.905px; }
+.sv-step__name { order: 3; font-size: 21px; line-height: 1.8; }
+.sv-step__desc { order: 4; color: #6d6255; font-size: 15px; line-height: 1.8; }
+
+/* 砂時計の細線（314:705）・金の粒（315:705）：独立あしらい、文章の外側 */
+.sv-flow__lines,
+.sv-flow__dots {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 195px);
+  z-index: 0;
+  width: 390px;
+  pointer-events: none;
+}
+
+.sv-flow__lines {
+  top: 119px;
+  left: calc(50% - 195.55px);
+  width: 391.1px;
+}
+
+.sv-flow__lines img,
+.sv-flow__dots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+/* ---------- FAQ（293:742・スマホのタップ開閉 293:793ほか） ---------- */
+.sv-faq .sv-art {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 85px 24px 32px;
+}
+
+.sv-faq__title {
+  color: var(--c-text);
+  font-size: 28px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  border-radius: 10px;
+}
+
+.faq__item.is-open {
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.faq__btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: #5d584f;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__q-text {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.faq__icon {
+  flex: none;
+  width: 20px;
+  font-size: 19px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.faq__icon::before {
+  content: "＋";
+}
+
+.faq__item.is-open .faq__icon::before {
+  content: "−";
+}
+
+.faq__a {
+  color: #5c5245;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.faq__a[hidden] {
+  display: none;
+}
+
+.faq__a p + p {
+  margin-top: 1.8em; /* Figmaの空行1行分 */
+}
+
+/* ---------- スマホのつなぎ装飾（独立あしらい・390列に配置） ---------- */
+.sv-deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* FV：Concept共通の桃色あしらい（316:705：Homeの原本の波、154.24°回転、55%） */
+.sv-deco--fv {
+  top: 321.264px; /* ページ上端405.264 − ヘッダー84 */
+  left: calc(50% - 195px + 352.316px);
+  width: 470px;
+  height: 157.983px;
+  opacity: 0.55;
+  transform-origin: 0 0;
+  transform: matrix(-0.9006238, -0.4345995, 0.4345995, -0.9006238, 0, 0);
+}
+
+.sv-deco--fv img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* 淡い波（294:705〜294:708：PC版FAQの文字なし背景、48%）。左右25pxずつ列の外へ */
+.sv-deco--wave {
+  left: calc(50% - 220px);
+  width: 440px;
+  opacity: 0.48;
+  background: url("../img/service/pc-faq.jpg") no-repeat;
+}
+
+.sv-deco--01,
+.sv-deco--04 {
+  height: 150.652px;
+  background-size: 440px 283.379px;
+  background-position: 0 -60.984px;
+}
+
+.sv-deco--02,
+.sv-deco--03 {
+  height: 139.891px;
+  background-size: 440px 283.373px;
+  background-position: 0 -64.566px;
+}
+
+.sv-deco--01 { top: 361px; }  /* FV下部（ページ445 − ヘッダー84） */
+.sv-deco--02 { top: 32px; }   /* Web料金への流れ */
+.sv-deco--03 { top: 47px; }   /* DTP料金への流れ */
+.sv-deco--04 { top: 102px; }  /* FAQの淡い波 */
+
+/* =========================================================
+   PC（768px以上）
+   ========================================================= */
+@media (min-width: 768px) {
+  .page > * {
+    --a: calc((min(100cqw, 1280px) - var(--rail-w)) / 1226.667);
+  }
+
+  /* ---------- 料金カードの背後の波（PC）----------
+     原案（75:127 / 75:210）は焼き込みのカード入りの1枚画像のため、カードの影を原案と同じ影（実測：ずれ3.3/10px・ぼかし6px・不透明度23%）
+     として計算で取り除き、カード本体の範囲だけを透明にした透過素材（_work/tools/make-deco-layers.ps1）。
+     波はカードの縁まで残り、カードの下へ続いて見える（1024px以上はカードも同じ比率で並ぶ）。
+     カードのスクロール枠の外の独立した層なので、横スクロールの枠で装飾は切れない。クリック・ドラッグも遮らない。
+     1280px超は原案の構図を保つため全層を枠の位置のまま置き、枠の左右端は短いフェード（暫定・解決扱いではない）。
+     画面端への寄せは、上部だけ広がり下部の帯と揃わず構図が変わるため取りやめた（11/10）。
+     画面端まで流すには波だけの原本素材が必要（このフォルダ・Figma内に未発見） */
+  .sv-wave {
+    position: absolute;
+    z-index: 0;
+    background: no-repeat 0 0 / 100% 100%;
+    pointer-events: none;
+  }
+
+  .sv-wave--plan-l {
+    top: calc(2.667 * var(--a));
+    left: 0;
+    width: calc(226 * var(--a));
+    height: calc(141.333 * var(--a));
+    background-image: url("../img/service/plan-wave-l.png");
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade));
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade));
+  }
+
+  .sv-wave--plan-r {
+    top: calc(2.667 * var(--a));
+    left: calc(682 * var(--a));
+    width: calc(542 * var(--a));
+    height: calc(161.333 * var(--a));
+    background-image: url("../img/service/plan-wave-r.png");
+    -webkit-mask-image: linear-gradient(to left, transparent 0, #000 var(--sv-fade));
+    mask-image: linear-gradient(to left, transparent 0, #000 var(--sv-fade));
+  }
+
+  .sv-wave--plan-c,
+  .sv-wave--grp-c {
+    left: 0;
+    width: calc(1224 * var(--a));
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade), #000 calc(100% - var(--sv-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade), #000 calc(100% - var(--sv-fade)), transparent 100%);
+  }
+
+  .sv-wave--plan-c {
+    top: calc(69.333 * var(--a));
+    height: calc(858 * var(--a));
+    background-image: url("../img/service/plan-wave-c.png");
+  }
+
+  .sv-wave--grp-c {
+    top: calc(201.333 * var(--a));
+    height: calc(460.667 * var(--a));
+    background-image: url("../img/service/grp-wave-c.png");
+  }
+
+  .sv-plan .sv-price-title,
+  .sv-grp .sv-price-title,
+  .sv-plan .price-carousel,
+  .sv-grp .price-carousel {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sv-frame {
+    width: min(100%, 1280px);
+  }
+
+  /* 背景画像の枠：幅 1226.667×a（右に和柄の幅を残す）。高さは最小値のみ（内容に応じて伸びる） */
+  .sv-art {
+    --sv-fade: clamp(0px, (100cqw - 1280px) / 2, 48px);
+    position: relative;
+    width: calc(1226.667 * var(--a));
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+  }
+
+  /* 背景画像のあるセクション：1280px超は画像の左右端を背景色へ馴染ませる（Conceptと同じ） */
+  .sv-art--web,
+  .sv-art--dtp,
+  .sv-art--faq {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade), #000 calc(100% - var(--sv-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade), #000 calc(100% - var(--sv-fade)), transparent 100%);
+  }
+
+  .sv-deco {
+    display: none;
+  }
+
+  /* ---------- ボタン（PC：210.667×53.272） ---------- */
+  .sv-ctas {
+    gap: calc(23.333 * var(--a));
+  }
+
+  .sv-cta {
+    width: calc(210.667 * var(--a));
+    height: calc(53.272 * var(--a));
+    border-radius: calc(8.475 * var(--a));
+    box-shadow: 0 calc(2.421 * var(--a)) calc(2.421 * var(--a)) rgba(51, 41, 26, 0.25);
+    font-size: max(12px, 19.333 * var(--a));
+    line-height: 1.38;
+  }
+
+  .sv-ctas--fv,
+  .sv-web .sv-ctas--sec,
+  .sv-dtp .sv-ctas--sec {
+    height: auto;
+  }
+
+  /* ---------- FV（75:110） ----------
+     外側の枠 .sv-fv__outer：正規ロゴ・横並びナビ（最大 --sv-outer-max）
+     中央の枠 .sv-frame   ：ぼかしロゴ・桃色の波・見出し・本文・ボタン（最大1280px） */
+  .sv-fv {
+    --sv-outer-max: 1440px; /* Conceptと同じ：1280px＝調整前、1440px＝左右それぞれ最大80px外側へ */
+  }
+
+  /* ぼかしロゴを右端の和柄（z-index:4）より前面に出すため、FVの中央の枠を前面に置く（Concept・Homeと同じ） */
+  .sv-fv .sv-frame {
+    z-index: 5;
+  }
+
+  .sv-art--fv {
+    width: 100%;
+    min-height: calc(720 * var(--a));
+    gap: 0;
+    padding: calc(160 * var(--a)) 0 calc(40 * var(--a));
+  }
+
+  .sv-art--fv > :not(.sv-fv__bglogo):not(.sv-fv__wave) {
+    position: relative;
+  }
+
+  /* ぼかしロゴ：素材 fv-back-image-logo-soft.png（承認済みConceptと同じ見え方。ぼかし・濃さ・色味・外周は素材に含まれ、
+     CSSでopacity・blur・maskを重ねない）。Service原案（75:124）への重ね合わせで実測した位置は
+     Concept・Homeと同じ（ロゴ本体 1280時 幅654・左上(640,-34.3)、一致度0.986）。透明な余白64px分だけ画像枠を広げる。
+     上端・右端は画面端で切れ、右側は和柄に重なる（原案どおり） */
+  .sv-fv__bglogo {
+    position: absolute;
+    top: calc(-64.829 * var(--a));
+    left: calc(609.471 * var(--a));
+    width: calc(715.048 * var(--a));
+    aspect-ratio: 1499 / 1496;
+    pointer-events: none;
+  }
+
+  .sv-fv__bglogo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  /* 左下の桃色の波と金の粒：Service原案（75:124）からの切り出し（1280時 0,440／540×280）。
+     左端が画面端に接する素材のため、1280px超は画面の左端へ寄せる（枠の途中で切れない） */
+  .sv-fv__wave {
+    position: absolute;
+    top: calc(440 * var(--a));
+    left: 0;
+    width: calc(540 * var(--a));
+    height: calc(280 * var(--a));
+    background: url("../img/service/pc-fv-wave.jpg") 0 0 / 100% 100% no-repeat;
+    pointer-events: none;
+    /* 原本に左側の続きがないため、1280px超は枠の左端で終わる（短いフェードは暫定。画面端まで流すには波だけの素材が必要） */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade));
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--sv-fade));
+  }
+
+  .sv-fv__outer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: max(0px, (100% - var(--sv-outer-max)) / 2);
+    right: max(0px, (100% - var(--sv-outer-max)) / 2);
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  .sv-fv__outer > * {
+    pointer-events: auto;
+  }
+
+  /* 正規ロゴ：Conceptと同じ（1280時 左43.333・上20.333・幅186.667） */
+  .sv-fv__logo {
+    position: absolute;
+    top: calc(20.333 * var(--a));
+    left: calc(43.333 * var(--a));
+    display: block;
+    width: calc(186.667 * var(--a));
+  }
+
+  .sv-fv__logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 横並びナビ：Conceptと同じ（右端は和柄の幅＋安全な余白83×a、文字はHomeと同じ19.333px） */
+  .sv-fv__nav {
+    position: absolute;
+    top: calc(59.667 * var(--a) - 13.031px);
+    right: calc(var(--rail-w) + 83 * var(--a));
+  }
+
+  .sv-fv__list {
+    display: flex;
+    gap: calc(23.333 * var(--a));
+  }
+
+  .sv-fv__list .nav-link {
+    color: var(--c-text);
+    font-size: 19.333px;
+    line-height: 1.348;
+    white-space: nowrap;
+  }
+
+  .sv-fv__list .nav-link:hover,
+  .sv-fv__list .nav-link:focus-visible {
+    color: var(--c-hover);
+  }
+
+  .sv-fv__title {
+    font-size: max(40px, 66.667 * var(--a));
+    line-height: 1.26;
+  }
+
+  .sv-fv__title-ja {
+    margin-top: calc(6 * var(--a));
+    font-size: max(14px, 18.667 * var(--a));
+    line-height: 1.5;
+  }
+
+  .sv-fv__divider {
+    width: calc(59.333 * var(--a));
+    height: max(2px, 4 * var(--a));
+    margin-top: calc(12.667 * var(--a));
+    background: #dc9774;
+  }
+
+  .sv-fv__message {
+    margin-top: calc(25.333 * var(--a));
+    font-size: max(20px, 30 * var(--a));
+    line-height: 1.4667;
+  }
+
+  .sv-fv__intro {
+    width: calc(853.333 * var(--a));
+    margin-top: calc(44 * var(--a));
+    font-size: max(14px, 19.333 * var(--a));
+    line-height: 1.655;
+  }
+
+  .sv-ctas--fv {
+    margin-top: calc(36 * var(--a));
+    gap: max(12px, 25.333 * var(--a));
+  }
+
+  /* FVのボタンは背景画像のボタン地に重ねないため、狭いPC幅でもスマホの大きさ（165×41.724）より小さくしない */
+  .sv-ctas--fv .sv-cta {
+    width: max(165px, 210.667 * var(--a));
+    height: max(41.724px, 53.272 * var(--a));
+    border-radius: max(6.638px, 8.475 * var(--a));
+    font-size: max(15.14px, 19.333 * var(--a));
+  }
+
+  /* ---------- 料金プラン（75:114） ---------- */
+  .sv-plan .sv-art {
+    gap: 0;
+    min-height: calc(973.333 * var(--a));
+    padding: calc(68 * var(--a)) 0 calc(60 * var(--a));
+  }
+
+  .sv-grp .sv-art {
+    gap: 0;
+    min-height: calc(693.333 * var(--a));
+    padding: calc(70.667 * var(--a)) 0 calc(60 * var(--a));
+  }
+
+  /* 見出しと全カードが収まる時の並びは、Figmaどおり1280の枠の中央（x640）。背景画像の枠は和柄の手前まで */
+  .sv-price-title {
+    width: calc(1280 * var(--a));
+    font-size: max(28px, 42.667 * var(--a));
+    line-height: 1.406;
+  }
+
+  .price-carousel {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* PCの横スクロール時（768〜1023px）：ホバーの金色の光が上で切れないよう、上に余白 */
+  .price-carousel:not(.is-static) .price-carousel__track {
+    padding-top: 20px;
+  }
+
+  .price-carousel--web:not(.is-static) .price-carousel__track {
+    padding-top: 8px;
+  }
+
+  .price-carousel--web {
+    margin-top: calc(26.667 * var(--a));
+  }
+
+  .price-carousel--web .price-carousel__track {
+    gap: 28px;
+    padding: 0 0 24px;
+  }
+
+  .price-carousel--grp {
+    margin-top: calc(77.333 * var(--a));
+  }
+
+  .price-carousel--grp .price-carousel__track {
+    gap: 33.333px;
+    padding: 0 0 24px;
+  }
+
+  .grp-card {
+    --s: 1px;
+  }
+
+  /* ---------- 写真のセクション（Web 75:112 ／ DTP 75:116） ---------- */
+  .sv-art--web { background-image: url("../img/service/pc-web.jpg"); }
+  .sv-art--dtp { background-image: url("../img/service/pc-dtp.jpg"); }
+
+  /* ---------- 制作の流れ（75:120） ---------- */
+  .sv-flow .sv-frame {
+    gap: 0;
+    min-height: calc(473.333 * var(--a));
+    padding: calc(43.333 * var(--a)) 0 calc(60 * var(--a));
+  }
+
+  .sv-flow__title {
+    width: calc(1280 * var(--a));
+    font-size: max(26px, 37.333 * var(--a));
+    line-height: 1.4286;
+  }
+
+  .sv-flow__title::after,
+  .sv-faq__title::after,
+  .sv-step__num::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 2px;
+    margin: calc(28.667 * var(--a)) auto 0;
+    background: #d7cb95;
+  }
+
+  .sv-flow__list {
+    display: grid;
+    grid-template-columns: repeat(4, calc(266.667 * var(--a)));
+    column-gap: calc(26.667 * var(--a));
+    justify-content: center;
+    width: calc(1280 * var(--a));
+    margin-top: calc(30 * var(--a));
+  }
+
+  .sv-step {
+    position: relative;
+    gap: 0;
+  }
+
+  .sv-step__num  { order: 1; font-size: max(26px, 36 * var(--a)); line-height: 1.2963; }
+  .sv-step__num::after { margin-top: calc(8 * var(--a)); }
+  .sv-step__name { order: 2; margin-top: calc(18 * var(--a)); font-size: max(18px, 24 * var(--a)); line-height: 1.4444; white-space: nowrap; }
+  .sv-step__icon { order: 3; width: calc(56 * var(--a)); height: calc(53.333 * var(--a)); margin-top: calc(16 * var(--a)); }
+  .sv-step__desc { order: 4; width: calc(286.667 * var(--a)); margin-top: calc(6.667 * var(--a)); font-size: max(14px, 19.333 * var(--a)); line-height: 1.5862; }
+
+  /* 工程の間の「›」（75:253ほか） */
+  .sv-step + .sv-step::before {
+    content: "›" / "";
+    position: absolute;
+    top: calc(125.333 * var(--a));
+    left: calc(-21.333 * var(--a));
+    width: calc(33.333 * var(--a));
+    color: #9f978a;
+    font-size: max(26px, 36 * var(--a));
+    line-height: calc(53.333 * var(--a));
+    text-align: center;
+  }
+
+  /* ---------- FAQ（75:122・167:449：PCはクリック／キーボードで開閉、開くのは1問ずつ） ---------- */
+  /* 最小の高さは背景画像の高さ（940÷1.5＝626.667）まで：Figmaの790では質問の下に約280pxの空白が残り、
+     画像の下端がセクションの途中に来ていた。回答を開くと内容に合わせて高くなり、Contactが下がる */
+  .sv-faq .sv-art {
+    gap: 0;
+    min-height: calc(626.667 * var(--a));
+    padding: calc(50 * var(--a)) 0 calc(80 * var(--a));
+    background-image: url("../img/service/pc-faq.jpg");
+  }
+
+  .sv-faq__title {
+    width: calc(1280 * var(--a));
+    font-size: max(28px, 40 * var(--a));
+    line-height: 1.4;
+  }
+
+  .sv-faq__title::after {
+    margin-top: calc(44.667 * var(--a));
+  }
+
+  .faq {
+    gap: 0;
+    width: max(calc(920 * var(--a)), 560px);
+    margin: calc(47.333 * var(--a)) 0 0 calc(180 * var(--a));
+  }
+
+  .faq__item {
+    padding: 0 0 9px;
+    border-radius: 0;
+  }
+
+  .faq__item.is-open {
+    gap: 0;
+    background: none;
+  }
+
+  /* 開いた項目の白い可読性フィルター（169:339：不透明度58%・周辺ぼかし7px・角丸18） */
+  .faq__item.is-open::before {
+    content: "";
+    position: absolute;
+    inset: -3px -8px 9px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.58);
+    filter: blur(7px);
+    pointer-events: none;
+  }
+
+  .faq__q,
+  .faq__a {
+    position: relative;
+  }
+
+  .faq__btn {
+    gap: 16px;
+    min-height: 52px;
+    padding: 6.667px calc(18.667 * var(--a)) 5.333px 17.333px;
+    border-bottom: 1px solid #c9ba7d;
+    align-items: flex-start;
+  }
+
+  .faq__item.is-open .faq__btn {
+    border-bottom-color: transparent;
+  }
+
+  .faq__item.is-open .faq__q-text {
+    text-shadow: 1px 2px 2px rgba(64, 56, 46, 0.32);
+  }
+
+  .faq__q-text {
+    font-size: max(18px, 24 * var(--a));
+    line-height: 40px;
+  }
+
+  /* 開閉矢印（167:321：21.333×10.667、開いた時は上向き） */
+  .faq__icon {
+    width: 21.333px;
+    height: 40px;
+    background: url("../img/service/faq-arrow.svg") center / 21.333px 10.667px no-repeat;
+    transition: transform 0.3s var(--ease);
+  }
+
+  .faq__icon::before {
+    content: none !important;
+  }
+
+  .faq__item.is-open .faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq__a {
+    padding: 0 17.333px 13px;
+    border-bottom: 1px solid #c9ba7d;
+    font-size: max(15px, 17 * var(--a));
+    line-height: 28px;
+  }
+
+  .faq__a p + p {
+    margin-top: 28px;
+  }
+
+  .faq__item.is-open .faq__a {
+    margin-top: -6px;
+  }
+}
+
+/* PC幅の写真セクション：1024px以上は写真の上に文字を重ねる（Figma 75:112 / 75:116） */
+@media (min-width: 1024px) {
+  .br-svpc {
+    display: inline;
+  }
+
+  .sv-photo {
+    display: none;
+  }
+
+  .sv-art--web { min-height: calc(613.333 * var(--a)); }
+  .sv-art--dtp { min-height: calc(666.667 * var(--a)); }
+
+  .sv-text {
+    align-items: flex-start;
+    gap: 0;
+    width: calc(660 * var(--a));
+    padding: calc(106.667 * var(--a)) 0 calc(40 * var(--a)) calc(92 * var(--a));
+  }
+
+  .sv-dtp .sv-text {
+    padding-top: calc(120 * var(--a));
+  }
+
+  .sv-text__title {
+    font-size: calc(50.667 * var(--a));
+    line-height: 1.3158;
+    text-align: left;
+  }
+
+  .sv-kern-dt {
+    letter-spacing: 0.0316em; /* Figma 1.6px（50.667px） */
+  }
+
+  .sv-text__message {
+    margin-top: calc(53.333 * var(--a));
+    font-size: calc(28 * var(--a));
+    line-height: 1.4286;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .sv-dtp .sv-text__message {
+    margin-top: calc(56.667 * var(--a));
+  }
+
+  .sv-text__body {
+    width: calc(570 * var(--a));
+    margin-top: calc(23.333 * var(--a));
+    font-size: calc(19.333 * var(--a));
+    line-height: 1.6897;
+    text-align: left !important;
+    white-space: nowrap;
+  }
+
+  .sv-dtp .sv-text__body {
+    margin-top: calc(23.333 * var(--a));
+  }
+
+  /* ボタンは背景画像のボタン地と同じ位置・大きさ（Web 476／DTP 518.667、左92・326） */
+  .sv-photo-sec .sv-ctas--sec {
+    position: absolute;
+    top: calc(476 * var(--a));
+    left: calc(92 * var(--a));
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-dtp .sv-ctas--sec {
+    top: calc(518.667 * var(--a));
+  }
+
+  .sv-photo-sec .sv-cta {
+    font-size: calc(19.333 * var(--a));
+  }
+}
+
+/* PC幅のうち 768〜1023px：写真→文字の縦積み（文字を縮めすぎない） */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .sv-photo-sec .sv-art {
+    width: 100%;
+    background-image: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .sv-text {
+    max-width: 640px;
+    margin-inline: auto;
+    padding: 56px 32px 28px;
+    gap: 24px;
+  }
+
+  .sv-text__title { font-size: 40px; }
+  .sv-text__message { font-size: 26px; }
+  .sv-text__body { font-size: 17px; }
+
+  .sv-photo-sec .sv-ctas--sec {
+    margin-bottom: 64px;
+  }
+
+  .sv-photo-sec .sv-cta {
+    width: 210.667px;
+    height: 53.272px;
+    border-radius: 8.475px;
+    font-size: 18px;
+  }
+
+  /* カードが横スクロールで動く幅では、焼き込みカードを除いた跡（波の抜け）が角丸の形で見えるため、
+     カードの背後を通る波の層は出さない（上部左右の波は残す） */
+  .sv-wave--plan-c,
+  .sv-wave--grp-c {
+    display: none;
+  }
+
+  /* 制作の流れ：2列×2段 */
+  .sv-flow__list {
+    grid-template-columns: repeat(2, 300px);
+    row-gap: 48px;
+    column-gap: 40px;
+  }
+
+  .sv-step + .sv-step::before {
+    display: none;
+  }
+
+  .sv-step__desc { width: 100%; }
+}
+
+/* =========================================================
+   料金カードのホバー（最新Figma：各カードの State=Hover、マウスが乗ると0.4秒で切り替え・離れると戻る）
+   変わるのは影のみ：Web料金 0 0 16px 3px 金(214,173,61,50%)＋1px 4px 6px 影(17%)、
+   各種料金 0 0 12px 2px 金(50%)＋1px 4px 6px 影(17%)。位置・大きさ・文字は変えない
+   ========================================================= */
+.plan-card,
+.grp-card {
+  transition: box-shadow 0.4s var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .plan-card:hover {
+    box-shadow:
+      0 0 calc(16 * var(--s)) calc(3 * var(--s)) rgba(214, 173, 61, 0.5),
+      calc(1 * var(--s)) calc(4 * var(--s)) calc(6 * var(--s)) rgba(51, 43, 31, 0.17);
+  }
+
+  .grp-card:hover {
+    box-shadow:
+      0 0 calc(12 * var(--s)) calc(2 * var(--s)) rgba(214, 173, 61, 0.5),
+      calc(1 * var(--s)) calc(4 * var(--s)) calc(6 * var(--s)) rgba(51, 43, 31, 0.17);
+  }
+
+  /* ホバー中のカードを前面に出し、隣のカードが外周の光彩を覆わないようにする */
+  .price-carousel__item:hover {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ドラッグ中はホバー表示を出さない */
+  .price-carousel.is-dragging .plan-card,
+  .price-carousel.is-dragging .grp-card {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan-card,
+  .grp-card {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   PC 1024px以上：原案どおりWeb3枚・DTP4枚を並べる（横スクロールにしない）。
+   カードも背景・波と同じ比率（--a）で並べ、原案の位置（Light 136・Standard 480・Partner 826.667／DTP 136から260間隔）に合わせる
+   ========================================================= */
+@media (min-width: 1024px) {
+  /* カードは背景・波と同じ比率（--a）で縮め、原案の位置（Light 136×a）に置く：背後の波とカードの位置関係が全幅で一致し、
+     右端のカードと和柄の間も十分に空く（1024px：約67px）ため、ホバーの外周の光彩が和柄の下に入らない。
+     文字だけ下限を設ける（--a のままでは1024pxで本文13.3px／小さい項目11.2px） */
+  .plan-card,
+  .grp-card {
+    --s: var(--a);
+  }
+
+  .plan-card__desc,
+  .plan-card__row dt,
+  .plan-card__features li,
+  .grp-card__row dt,
+  .grp-card__notes {
+    font-size: max(14px, 16.667 * var(--s));
+  }
+
+  .plan-card__features .plan-card__small {
+    font-size: max(12px, 14 * var(--s));
+  }
+
+  .price-carousel--web .price-carousel__item {
+    padding-top: calc(44 * var(--a)); /* 「おすすめ」ラベルの高さ */
+  }
+
+  .price-carousel.is-static .price-carousel__track {
+    margin-left: calc(136 * var(--a));
+    margin-right: 0;
+  }
+
+  .price-carousel--web .price-carousel__track {
+    gap: calc(28 * var(--a));
+    padding-bottom: calc(24 * var(--a));
+  }
+
+  .price-carousel--web.is-static .price-carousel__item:nth-child(3) {
+    margin-left: calc(2.667 * var(--a)); /* Figmaの間隔は 28 と 30.667 */
+  }
+
+  .price-carousel--grp .price-carousel__track {
+    gap: calc(33.333 * var(--a));
+    padding-bottom: calc(24 * var(--a));
+  }
+}
