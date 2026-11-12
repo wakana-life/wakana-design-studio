@@ -760,6 +760,92 @@
   user-select: none;
 }
 
+/* ---------- Portfolio & Works：スマホ表示の調整（2026-11-12 ユーザー承認：案A） ----------
+   PC（768px以上）と同じ切り替え条件のスマホ側（767.98px以下）だけに記述し、上の基本ルール・PCの指定は変更しない。
+   ・カード：左右16pxの余白で画面幅に合わせ（最大400px）、親を flex で水平中央へ（以前は350px上限のカードが左端に寄っていた）
+   ・画像：最大幅280px。縦横比は既存の指定のまま（HP・LP 348/307、DTP 348/309.11）
+   ・文字：見出し22px／キャッチ16px／本文15px（行間1.65）。DTPの個別指定（キャッチ20px・本文13px）もHP・LPにそろえる
+   ・間隔：一律の gap: 12px をやめ、まとまりごとに設定（画像→見出し14／見出し→キャッチ4／キャッチ→本文8／本文→【制作実績】14／実績名→ボタン12）
+   ・タブ：幅108px固定×3で320pxでは画面外へはみ出していたため、画面幅に収まる3等分（最大112px）。
+     タップ領域（::before）は左右4pxに縮め、間隔8pxの隣のタブと重ならないようにする */
+@media (max-width: 767.98px) {
+  .works__inner {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .works__tabs {
+    gap: 8px;
+    width: min(100%, 352px);
+  }
+
+  .works-tab {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    max-width: 112px;
+    height: 28px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .works-tab::before {
+    inset: -8px -4px;
+  }
+
+  .works__cards {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .work-card {
+    gap: 0;
+    width: min(100%, 400px);
+    padding: 16px 16px 20px;
+  }
+
+  .work-card__media {
+    width: min(100%, 280px);
+  }
+
+  .work-card__title {
+    margin-top: 14px;
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  .work-card__catch,
+  .work-card--dtp .work-card__catch {
+    margin-top: 4px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .work-card__desc,
+  .work-card--dtp .work-card__desc {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.65;
+    letter-spacing: normal;
+    text-align: start;
+  }
+
+  .work-card__works-label {
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+
+  .work-card__name {
+    line-height: 1.6;
+  }
+
+  .work-card .btn--static {
+    margin-top: 12px;
+  }
+}
+
 @media (min-width: 768px) {
   .works {
     background-size: 155.2px 790px;
