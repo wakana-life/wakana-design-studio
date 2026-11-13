@@ -21,16 +21,27 @@
       image: { src: 'full-restaurant.webp', w: 1129, h: 2458 }, // 原本PNGと全画素一致（可逆WebP）
       note: '一覧にはHPのファーストビューを掲載しています。拡大画面では提供された縦長のページ全体を確認できます。'
     },
+    // LP3作品：拡大はLPの完成デザインの縦長全体画像（原寸のまま WebP 品質0.95）。view: 'tall' で縦長LP用の表示
+    // （HPと同じ大きさのダイアログ・画像の最大幅760px・ダイアログ内で縦スクロール。portfolio.css）。PC・スマホとも同じ画像
     '03': {
-      cat: 'lp', type: 'LP・バナーデザイン',
-      image: { src: 'nursery.webp', w: 2021, h: 1431 }, // 制作紹介PDF（LP＋SNSバナー）の資料全体
-      note: '一覧は制作紹介PDF内のLPファーストビューを切り出して掲載しています。拡大時はLPとSNSバナーを含む横長の制作紹介資料全体を表示します。資料に記載の担当は「ディレクション：WAKANA design studio／デザイン：結-yuinowa」です。'
+      cat: 'lp', type: 'LP・バナーデザイン', view: 'tall',
+      image: { src: 'full-yume-lp.webp', w: 1000, h: 11266 }, // YUME_LP_FULL.png
+      note: '一覧は制作紹介資料に含まれるLPのファーストビューを切り出して掲載しています。拡大時はLPのデザイン全体を上から順にご覧いただけます。制作担当：WAKANA design studio（ディレクション）／結-yuinowa（デザイン）'
     },
     '04': {
-      // LINE講座：一覧は提供のFV画像（list-marketing.webp、2026-11-13差し替え）。拡大は従来の全体画像のまま
-      cat: 'lp', type: 'LPデザイン',
-      image: { src: 'full-marketing.webp', w: 1546, h: 1080 }, // 複数画面を並べた元の全体画像（原本PNGと全画素一致の可逆WebP）
-      note: '一覧にはLPのファーストビュー画像を掲載しています。拡大時は複数画面を並べた制作画像全体を表示します。'
+      // LINE講座：一覧は提供のFV画像（list-marketing.webp）
+      cat: 'lp', type: 'LPデザイン', view: 'tall',
+      image: { src: 'full-line-lp.webp', w: 1000, h: 12143 }, // LINE_LP_FULL.png
+      note: '一覧にはLPのファーストビュー画像を掲載しています。拡大時はLPのデザイン全体を上から順にご覧いただけます。'
+    },
+    '05': {
+      // ボタニカルドリンク WAKANA（自主制作・架空商品）
+      cat: 'lp', type: 'LPデザイン｜自主制作・架空商品', view: 'tall',
+      image: { src: 'full-botanical-lp.webp', w: 1080, h: 9999 }, // WAKANA_LP_FULL.png
+      note: [
+        '拡大時はLPのデザイン全体を上から順にご覧いただけます。',
+        '本作品は自主制作の架空LPです。実在する企業・商品の公式広告ではありません。'
+      ]
     },
     '06': {
       cat: 'dtp', type: 'DTPデザイン',
@@ -187,6 +198,9 @@
 
     currentId = id;
     modal.dataset.category = work.cat;
+    // 縦長LPの表示（view: 'tall'）。それ以外の作品では属性を外し、従来の表示のまま
+    if (work.view) modal.dataset.view = work.view;
+    else delete modal.dataset.view;
     titleEl.textContent = name;
     subtitleEl.textContent = `${work.type} ／ 全体イメージ`;
     contentEl.replaceChildren(buildContent(work, name));
@@ -194,6 +208,8 @@
 
     root.classList.add('pw-lock');
     modal.showModal();
+    // 表示後にも先頭へ（閉じている間＝非表示の間に scrollTop を 0 にしても反映されず、前に開いた作品のスクロール位置が残るため）
+    contentEl.scrollTop = 0;
     closeButton.focus();
   }
 

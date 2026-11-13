@@ -38,50 +38,53 @@
   background: var(--c-bg);
 }
 
+/* FVの見出し・本文：既存下層ページ（service.css .sv-fv__*。Conceptも同値）の文字設定・間隔に統一（2026-11-13）。
+   スマホ：上の余白24px、要素の間隔10px（Serviceの flex gap と同じ）。下の余白・最小の高さは流線の領域として従来どおり */
 .pw-fv__body {
   position: relative;
-  padding: 42px 0 145px; /* 見出しの上端をデモと同じ位置（ページ上端から126px）に */
+  padding: 24px 0 145px;
   text-align: center;
 }
 
+/* 英字見出し：Serviceと同じ 48px・行間1.5。作品名が長く48pxでは横幅345pxになるため、
+   375px以下の幅では1行に収まる大きさまで縮める（本文の枠 100%−38px ÷ 7.3em） */
 .pw-fv__title {
   font-family: var(--f-garamond);
   font-weight: 400;
-  font-size: clamp(32px, 9.5cqw, 48px);
-  line-height: 1.26;
-  letter-spacing: 0.012em;
+  font-size: min(48px, calc((100cqw - 38px) / 7.3));
+  line-height: 1.5;
 }
 
 .pw-fv__title-ja {
-  margin: 4px 0 18px;
+  margin: 10px 0 0;
+  font-weight: 500;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 .pw-fv__dash {
   display: block;
-  width: 38px;
+  width: 48px;
   height: 2px;
-  margin: 0 auto 24px;
+  margin: 10px auto 0;
   background: #e88f66;
 }
 
 .pw-fv__lead {
-  margin: 0 auto 20px;
+  margin: 10px auto 0;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 1.9;
+  font-size: 20px;
+  line-height: 1.5;
 }
 
 .pw-fv__desc {
-  margin: 0 auto;
-  font-size: 11px;
-  line-height: 2.2;
-}
-
-@media (max-width: 410px) {
-  .pw-fv__lead { font-size: 16px; }
-  .pw-fv__desc { font-size: 10px; }
+  margin: 10px auto 0;
+  font-size: 13px;
+  line-height: 1.8;
+  /* 3行目が収まらない320px付近で、最後の数文字だけが次の行に残らないよう文節で改行（折り返さない幅では影響なし。
+     auto-phrase 非対応のブラウザは通常の改行） */
+  word-break: auto-phrase;
+  text-wrap: pretty;
 }
 
 /* 背景ぼかしロゴ：素材自体のぼかし・濃さを使用（追加の filter / opacity なし） */
@@ -120,24 +123,39 @@
     min-height: 540px;
   }
 
+  /* 768px以上：service.css（min-width: 768px）の .sv-fv__* と同じ値（--pw-a は Service の --a と同じ式） */
   .pw-fv__body {
-    padding: 162.667px 0 190px; /* デモ：ヘッダー121px＋41.667px */
+    padding: calc(160 * var(--pw-a)) 0 190px;
   }
 
   .pw-fv__title {
-    font-size: clamp(40px, 5.2084cqw, 66.667px);
+    font-size: max(40px, 66.667 * var(--pw-a));
+    line-height: 1.26;
   }
 
   .pw-fv__title-ja {
-    font-size: 18.667px;
+    margin-top: calc(6 * var(--pw-a));
+    font-size: max(14px, 18.667 * var(--pw-a));
+    line-height: 1.5;
+  }
+
+  .pw-fv__dash {
+    width: calc(59.333 * var(--pw-a));
+    height: max(2px, 4 * var(--pw-a));
+    margin-top: calc(12.667 * var(--pw-a));
+    background: #dc9774;
   }
 
   .pw-fv__lead {
-    font-size: clamp(19px, 2.15cqw, 25px);
+    margin-top: calc(25.333 * var(--pw-a));
+    font-size: max(20px, 30 * var(--pw-a));
+    line-height: 1.4667;
   }
 
   .pw-fv__desc {
-    font-size: 13px;
+    margin-top: calc(44 * var(--pw-a));
+    font-size: max(14px, 19.333 * var(--pw-a));
+    line-height: 1.655;
   }
 
   /* デモ：和柄の左端から70px右へはみ出す（はみ出し分は和柄の下） */
@@ -459,6 +477,15 @@
   object-position: top center;
 }
 
+/* ボタニカルドリンク WAKANA：一覧画像（1080×1005）。表示方法は上と同じで、メインコピーが左上にあるため左上合わせ
+   （左右が隠れる768〜約880px幅でも、メインコピーと人物を残す。右端の縦書きコピーが一部隠れる） */
+.pw-crop--botanical img {
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
 
 /* ---------- DTP ---------- */
 .pw-visual--poster .pw-art > img {
@@ -798,6 +825,21 @@ button.pw-open:hover {
 
 .pw-modal[data-category="lp"] .pw-full {
   max-width: 1100px;
+}
+
+/* 縦長LP（portfolio.js の view: 'tall'）：HP作品と同じ大きさのダイアログに、LPの全体画像を最大幅760pxで中央に表示し、
+   ダイアログ内で縦にスクロールして最上部から最下部まで見る（縦横比は保持・拡大しない。600px以下は上のLPの小さい画面の指定で画面幅いっぱい）。
+   ダイアログ内のスクロールが端に達しても背面のページへ伝わらないようにする（iPhone Safari 等のスクロール連鎖の防止） */
+.pw-modal[data-view="tall"] .pw-dialog {
+  width: min(860px, 100%);
+}
+
+.pw-modal[data-view="tall"] .pw-full {
+  max-width: 760px;
+}
+
+.pw-modal[data-view="tall"] .pw-dialog__content {
+  overscroll-behavior: contain;
 }
 
 /* 列ごとの画像を縦に並べる表示（portfolio.js の WORKS で columns を持つ作品のスマホ表示。PCは .pw-full の全体表示。どちらを作るかは portfolio.js）。
