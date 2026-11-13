@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="assets/css/service.css">
   <script src="assets/js/page-entry.js"></script>
   <script src="assets/js/menu.js" defer></script>
-  <script src="assets/js/notice.js" defer></script>
   <script src="assets/js/pattern-light.js" defer></script>
   <script src="assets/js/price-carousel.js" defer></script>
   <script src="assets/js/faq.js" defer></script>
@@ -69,7 +68,7 @@
           <li><a class="nav-link" href="index.html">Home</a></li>
           <li><a class="nav-link" href="concept.html">Concept</a></li>
           <li><a class="nav-link" href="#top" aria-current="page">Service</a></li>
-          <li><a class="nav-link" href="index.html#works">Portfolio&amp;Works</a></li>
+          <li><a class="nav-link" href="portfolio.html">Portfolio&amp;Works</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -92,7 +91,7 @@
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link" href="concept.html">Concept</a></li>
             <li><a class="nav-link" href="#top" aria-current="page">Service</a></li>
-            <li><a class="nav-link" href="index.html#works">Portfolio&amp;Works</a></li>
+            <li><a class="nav-link" href="portfolio.html">Portfolio&amp;Works</a></li>
             <li><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
         </nav>
@@ -108,8 +107,8 @@
           <p class="sv-fv__message">まずは現状を整え、<br class="br-sp">“目的”を見つけましょう。</p>
           <p class="sv-fv__intro">ホームページ、SNS、LINE。<br>現状の“目的”から今のあなたに合った<br class="br-sp">最適解を共に導き出し、<br class="br-pc">形にしていきます。</p>
           <div class="sv-ctas sv-ctas--fv">
-            <!-- 制作実績の詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
-            <button class="btn sv-cta sv-cta--works" type="button" data-notice="works-notice" aria-haspopup="dialog">制作実績を見る</button>
+            <!-- 制作実績：Portfolio & Works ページの作品一覧へ -->
+            <a class="btn sv-cta sv-cta--works" href="portfolio.html#works">制作実績を見る</a>
             <a class="btn sv-cta sv-cta--consult" href="contact.html">“想い”を相談する</a>
           </div>
         </div>
@@ -130,7 +129,8 @@
             <p class="sv-text__body">HPやLPの「目的」に沿って構成を設計するとともに、<br class="br-svpc">あなたの届けたい想いが相手にどのように受け取られる<br class="br-svpc">のか、その「捉え方」に着目。<br class="br-svpc">情報の伝わる順序や見せ方、導線までを考え、想いと目<br class="br-svpc">的がきちんと届くWebデザインへ落とし込みます。</p>
           </div>
           <div class="sv-ctas sv-ctas--sec">
-            <button class="btn sv-cta sv-cta--works" type="button" data-notice="works-notice" aria-haspopup="dialog">Web制作実績を見る</button>
+            <!-- Web制作実績：Portfolio & Works をHP・LPに絞り込んだ状態で表示（遷移後も切り替え可） -->
+            <a class="btn sv-cta sv-cta--works" href="portfolio.html?category=web#works">Web制作実績を見る</a>
             <a class="btn sv-cta sv-cta--consult" href="contact.html">相談してみる</a>
           </div>
         </div>
@@ -227,7 +227,8 @@
             <p class="sv-text__body">ポスター・フライヤー・名刺・パンフレットなど、それ<br class="br-svpc">ぞれの「目的」に沿って伝える順序や優先順位を設計し<br class="br-svpc">ます。<br class="br-svpc">限られた紙面の中でも、あなたの想いや価値、大切な情<br class="br-svpc">報が自然に伝わるよう、文字・写真・余白などを組み合<br class="br-svpc">わせ、一貫したデザインへ落とし込みます。</p>
           </div>
           <div class="sv-ctas sv-ctas--sec">
-            <button class="btn sv-cta sv-cta--works" type="button" data-notice="works-notice" aria-haspopup="dialog">制作実績を見る</button>
+            <!-- DTP制作実績：Portfolio & Works をDTPに絞り込んだ状態で表示（遷移後も切り替え可） -->
+            <a class="btn sv-cta sv-cta--works" href="portfolio.html?category=dtp#works">制作実績を見る</a>
             <a class="btn sv-cta sv-cta--consult" href="contact.html">相談してみる</a>
           </div>
         </div>
@@ -395,14 +396,6 @@
       </div>
     </section>
   </main>
-  <!-- 制作実績の案内（詳細ページは制作中のため、移動せずにこの案内を表示する：notice.js） -->
-  <dialog class="notice" id="works-notice" aria-labelledby="works-notice-text">
-    <div class="notice__body">
-      <span class="notice__rule" aria-hidden="true"></span>
-      <p class="notice__text" id="works-notice-text">制作実績の公開ページは現在制作中です。<br>公開まで今しばらくお待ちください。</p>
-      <button class="notice__close" type="button" data-notice-close><img src="assets/img/common/icon-close.svg" width="44" height="44" alt="閉じる"></button>
-    </div>
-  </dialog>
 
   <!-- ===== フッター（75:304 ／ 293:760：Home共通） ===== -->
   <footer class="site-footer">
@@ -416,7 +409,7 @@
           <li><a class="nav-link" href="index.html">Home</a></li>
           <li><a class="nav-link" href="concept.html">Concept</a></li>
           <li><a class="nav-link" href="#top" aria-current="page">Service</a></li>
-          <li><a class="nav-link" href="index.html#works">Portfolio &amp; Works</a></li>
+          <li><a class="nav-link" href="portfolio.html">Portfolio &amp; Works</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
           <li><a class="nav-link" href="privacy.html">Privacy policy</a></li>
         </ul>

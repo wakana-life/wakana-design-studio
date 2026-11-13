@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="assets/css/home.css">
   <script src="assets/js/page-entry.js"></script>
   <script src="assets/js/menu.js" defer></script>
-  <script src="assets/js/notice.js" defer></script>
   <script src="assets/js/works-tabs.js" defer></script>
   <script src="assets/js/pattern-light.js" defer></script>
   <script type="application/ld+json">
@@ -92,7 +91,7 @@
           <li><a class="nav-link" href="#top" aria-current="page">Home</a></li>
           <li><a class="nav-link" href="concept.html">Concept</a></li>
           <li><a class="nav-link" href="service.html">Service</a></li>
-          <li><a class="nav-link" href="#works">Portfolio&amp;Works</a></li>
+          <li><a class="nav-link" href="portfolio.html">Portfolio&amp;Works</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -165,7 +164,7 @@
                 <li><a class="nav-link" href="#top" aria-current="page">Home</a></li>
                 <li><a class="nav-link" href="concept.html">Concept</a></li>
                 <li><a class="nav-link" href="service.html">Service</a></li>
-                <li><a class="nav-link" href="#works">Portfolio&amp;Works</a></li>
+                <li><a class="nav-link" href="portfolio.html">Portfolio&amp;Works</a></li>
                 <li><a class="nav-link" href="contact.html">Contact</a></li>
               </ul>
             </nav>
@@ -265,7 +264,7 @@
                     <span class="work-card__name">中華そば 麒麟</span>
                   </p>
                   <!-- 「詳しく見る」詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
-                  <button class="btn btn--gold btn--static" type="button" data-notice="works-notice" aria-haspopup="dialog">詳しく見る<span class="visually-hidden">（中華そば 麒麟）</span></button>
+                  <a class="btn btn--gold btn--static" href="portfolio.html#works">詳しく見る<span class="visually-hidden">（中華そば 麒麟）</span></a>
                 </div>
               </div>
             </div>
@@ -291,7 +290,7 @@
                     <span class="work-card__name">社会福祉法人 愛誠会<br>ゆめこども園 様</span>
                   </p>
                   <!-- 「詳しく見る」詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
-                  <button class="btn btn--gold btn--static" type="button" data-notice="works-notice" aria-haspopup="dialog">詳しく見る<span class="visually-hidden">（ゆめこども園）</span></button>
+                  <a class="btn btn--gold btn--static" href="portfolio.html#works">詳しく見る<span class="visually-hidden">（ゆめこども園）</span></a>
                 </div>
               </div>
             </div>
@@ -322,7 +321,7 @@
                     <span class="work-card__name">和叶｜自社名刺デザイン</span>
                   </p>
                   <!-- 「詳しく見る」詳細ページは制作中：ボタンで「公開ページ制作中」の案内を開く（2026-11-10 ユーザー指示） -->
-                  <button class="btn btn--gold btn--static" type="button" data-notice="works-notice" aria-haspopup="dialog">詳しく見る<span class="visually-hidden">（和叶｜自社名刺デザイン）</span></button>
+                  <a class="btn btn--gold btn--static" href="portfolio.html#works">詳しく見る<span class="visually-hidden">（和叶｜自社名刺デザイン）</span></a>
                 </div>
               </div>
             </div>
@@ -361,14 +360,6 @@
       </div>
     </section>
   </main>
-  <!-- 制作実績の案内（詳細ページは制作中のため、移動せずにこの案内を表示する：notice.js） -->
-  <dialog class="notice" id="works-notice" aria-labelledby="works-notice-text">
-    <div class="notice__body">
-      <span class="notice__rule" aria-hidden="true"></span>
-      <p class="notice__text" id="works-notice-text">制作実績の公開ページは現在制作中です。<br>公開まで今しばらくお待ちください。</p>
-      <button class="notice__close" type="button" data-notice-close><img src="assets/img/common/icon-close.svg" width="44" height="44" alt="閉じる"></button>
-    </div>
-  </dialog>
 
   <!-- ===== フッター（8:8 / 233:700） ===== -->
   <footer class="site-footer">
@@ -382,7 +373,7 @@
           <li><a class="nav-link" href="#top" aria-current="page">Home</a></li>
           <li><a class="nav-link" href="concept.html">Concept</a></li>
           <li><a class="nav-link" href="service.html">Service</a></li>
-          <li><a class="nav-link" href="#works">Portfolio &amp; Works</a></li>
+          <li><a class="nav-link" href="portfolio.html">Portfolio &amp; Works</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
           <li><a class="nav-link" href="privacy.html">Privacy policy</a></li>
         </ul>
