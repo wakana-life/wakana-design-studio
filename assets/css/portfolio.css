@@ -600,6 +600,16 @@
   line-height: 2;
 }
 
+/* 制作担当のクレジット（ゆめこども園のみ）：説明文より1px小さく、フィルターと同じアイボリー、カテゴリー見出しの小見出しと同じゴールドの縦線。PC・スマホ共通 */
+.pw-work__credit {
+  margin: 16px 0 18px;
+  padding: 1px 0 1px 12px;
+  border-left: 1px solid #d5b777;
+  color: #efece5;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
 .pw-open {
   padding: 0;
   border: 0;

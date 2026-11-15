@@ -26,7 +26,9 @@
     '03': {
       cat: 'lp', type: 'LP・バナーデザイン', view: 'tall',
       image: { src: 'full-yume-lp.webp', w: 1000, h: 11266 }, // YUME_LP_FULL.png
-      note: '一覧は制作紹介資料に含まれるLPのファーストビューを切り出して掲載しています。拡大時はLPのデザイン全体を上から順にご覧いただけます。制作担当：WAKANA design studio（ディレクション）／結-yuinowa（デザイン）'
+      note: '一覧は制作紹介資料に含まれるLPのファーストビューを切り出して掲載しています。拡大時はLPのデザイン全体を上から順にご覧いただけます。',
+      // 制作担当（一覧の .pw-work__credit と同じ文言）。注記の下に2行で表示
+      credit: ['制作ディレクション：和叶 Wakana Design Studio', 'デザイン制作：結-yuinowa/秋本 結希']
     },
     '04': {
       // LINE講座：一覧は提供のFV画像（list-marketing.webp）
@@ -175,6 +177,15 @@
       note.textContent = text;
       frag.appendChild(note);
     });
+    // 制作担当（ある作品のみ）：注記と同じ見た目で1段落・行ごとに改行
+    if (work.credit) {
+      const credit = el('p', 'pw-dialog__note');
+      work.credit.forEach((line, i) => {
+        if (i) credit.appendChild(document.createElement('br'));
+        credit.appendChild(document.createTextNode(line));
+      });
+      frag.appendChild(credit);
+    }
     // 全体画像が読み込めなかったとき（通信の途切れ等）：壊れた画像の代わりに案内を表示（1回だけ）
     frag.querySelectorAll('img').forEach((img) => {
       img.addEventListener('error', () => {
